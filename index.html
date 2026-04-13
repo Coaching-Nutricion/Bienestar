@@ -38,23 +38,22 @@ nav{
   position:fixed;top:0;left:0;right:0;z-index:200;
   display:flex;justify-content:space-between;align-items:center;
   padding:14px 5vw;
-  background:rgba(253,250,243,.97);
+  background:rgba(28,20,8,.55);
   backdrop-filter:blur(16px);
-  border-bottom:1px solid rgba(201,169,110,.3);
+  border-bottom:1px solid rgba(201,148,26,.2);
 }
 .nlogo{
   font-family:'Playfair Display',serif;
   font-size:22px;font-weight:700;letter-spacing:2px;
-  color:var(--deep-sage);text-decoration:none;
+  color:#F0D98A;text-decoration:none;
 }
-.nlogo span{color:var(--rose)}
-.nlinks{display:flex;gap:16px;align-items:center}
+.nlogo span{color:var(--taupe)}
 .nlinks a{
-  font-size:12px;color:var(--text-soft);text-decoration:none;
+  font-size:12px;color:rgba(255,255,255,.7);text-decoration:none;
   letter-spacing:.6px;text-transform:uppercase;font-weight:500;
   transition:color .2s;white-space:nowrap;
 }
-.nlinks a:hover{color:var(--deep-rose)}
+.nlinks a:hover{color:#F0D98A}
 .nlinks .btn-nav{
   background:var(--rose);color:#fff !important;
   padding:9px 20px;border-radius:100px;
@@ -62,29 +61,160 @@ nav{
 }
 .nlinks .btn-nav:hover{background:var(--deep-rose) !important}
 
-/* ===== HERO ===== */
-.hero{
-  min-height:100vh;
-  display:grid;grid-template-columns:1fr 1fr;
-  align-items:center;
-  padding:110px 6vw 80px;
-  gap:40px;
+/* ===== HERO NUEVO (full-width con imágenes) ===== */
+.hero-new{
+  margin-top:60px; /* nav height */
+  display:flex;flex-direction:column;
   position:relative;overflow:hidden;
-  background:linear-gradient(150deg, #FDFAF3 0%, #F8F1E0 60%, #EEE0BB 100%);
 }
-.hero::before{
-  content:'';position:absolute;top:-100px;right:-100px;
-  width:600px;height:600px;border-radius:50%;
-  background:radial-gradient(circle, rgba(201,148,26,.15) 0%, transparent 65%);
-  pointer-events:none;
+
+/* TOP — imagen mujer */
+.hn-top{
+  position:relative;width:100%;
+  height:clamp(480px, 70vh, 760px);
+  overflow:hidden;
 }
-.hero::after{
-  content:'';position:absolute;bottom:-80px;left:-80px;
-  width:400px;height:400px;border-radius:50%;
-  background:radial-gradient(circle, rgba(201,148,26,.10) 0%, transparent 65%);
-  pointer-events:none;
+.hn-img-top{
+  width:100%;height:100%;
+  object-fit:cover;object-position:center 20%;
+  display:block;
 }
-.hero-content{position:relative;z-index:1}
+/* Dark gradient overlay left side for text legibility */
+.hn-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(
+    105deg,
+    rgba(28,20,8,.82) 0%,
+    rgba(28,20,8,.65) 38%,
+    rgba(28,20,8,.15) 62%,
+    transparent 80%
+  );
+}
+
+/* Hero content over image */
+.hn-content{
+  position:absolute;
+  top:50%;left:6vw;
+  transform:translateY(-50%);
+  max-width:520px;
+  z-index:2;
+}
+.hn-content .htag{
+  background:rgba(201,148,26,.18);
+  border:1px solid rgba(201,148,26,.45);
+  color:#F0D98A;
+  margin-bottom:18px;
+}
+.hn-content .htitle{
+  color:#fff;
+  font-size:clamp(56px,8vw,100px);
+  margin-bottom:10px;
+}
+.hn-content .htitle em{color:#F0D98A;}
+.hn-content .hsubtitle{
+  color:rgba(255,255,255,.82);
+  font-size:clamp(14px,1.6vw,17px);
+  margin-bottom:22px;
+}
+.hn-content .h-features li{
+  color:rgba(255,255,255,.75);font-size:14px;
+}
+.hn-content .h-features li::before{color:#F0D98A;}
+.hn-content .btn-secondary{
+  border-color:rgba(255,255,255,.5);
+  color:#fff;
+}
+.hn-content .btn-secondary:hover{background:rgba(255,255,255,.15);}
+
+/* Floating stats bar — bottom of top image */
+.hn-stats{
+  position:absolute;bottom:0;left:0;right:0;
+  background:rgba(28,20,8,.75);backdrop-filter:blur(16px);
+  border-top:1px solid rgba(201,148,26,.25);
+  display:flex;align-items:center;justify-content:center;
+  gap:0;padding:18px 6vw;z-index:3;flex-wrap:wrap;
+}
+.hn-stat{
+  display:flex;align-items:center;gap:12px;
+  padding:0 32px;
+}
+.hn-stat-div{
+  width:1px;height:36px;
+  background:rgba(201,148,26,.3);
+  flex-shrink:0;
+}
+.hn-stat-icon{font-size:24px;}
+.hn-stat-label{
+  font-size:10px;letter-spacing:1.5px;text-transform:uppercase;
+  color:rgba(255,255,255,.45);margin-bottom:3px;
+}
+.hn-stat-val{font-size:15px;font-weight:600;color:#fff;}
+
+/* BOTTOM — food image strip */
+.hn-bottom{
+  position:relative;width:100%;
+  height:clamp(200px,28vh,320px);
+  overflow:hidden;
+}
+.hn-img-bottom{
+  width:100%;height:100%;
+  object-fit:cover;object-position:center 35%;
+  display:block;
+}
+.hn-bottom-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(
+    to right,
+    rgba(28,20,8,.6) 0%,
+    rgba(28,20,8,.2) 50%,
+    rgba(28,20,8,.55) 100%
+  );
+}
+.hn-bottom-label{
+  position:absolute;left:6vw;top:50%;transform:translateY(-50%);
+  z-index:2;
+}
+.hn-bl-title{
+  display:block;
+  font-family:'Playfair Display',serif;
+  font-size:clamp(18px,2.5vw,28px);
+  font-style:italic;color:#F0D98A;
+  margin-bottom:4px;
+}
+.hn-bl-sub{
+  display:block;font-size:13px;
+  color:rgba(255,255,255,.65);
+  letter-spacing:1px;text-transform:uppercase;
+}
+.hn-cta-strip{
+  position:absolute;right:6vw;top:50%;transform:translateY(-50%);
+  z-index:2;
+  background:rgba(201,148,26,.9);color:#2A1F0A;
+  padding:12px 28px;border-radius:100px;
+  font-size:13px;font-weight:700;letter-spacing:.5px;
+  text-decoration:none;transition:all .3s;
+  white-space:nowrap;
+}
+.hn-cta-strip:hover{background:#F0D98A;transform:translateY(-52%);}
+
+/* Responsive */
+@media(max-width:900px){
+  .hn-top{height:clamp(400px,65vh,600px);}
+  .hn-content{max-width:85vw;left:5vw;}
+  .hn-stat{padding:0 16px;}
+  .hn-bottom{height:clamp(160px,22vh,240px);}
+  .hn-cta-strip{display:none;}
+}
+@media(max-width:600px){
+  .hn-top{height:clamp(380px,80vh,520px);}
+  .hn-overlay{background:linear-gradient(180deg,rgba(28,20,8,.7) 0%,rgba(28,20,8,.5) 60%,transparent 100%);}
+  .hn-content{top:44%;left:5vw;right:5vw;max-width:100%;}
+  .hn-stats{gap:4px;padding:12px 4vw;}
+  .hn-stat{padding:0 10px;}
+  .hn-stat-label{display:none;}
+  .hn-bottom{height:140px;}
+  .hn-bl-title{font-size:15px;}
+}
 .htag{
   display:inline-flex;align-items:center;gap:8px;
   background:rgba(201,148,26,.12);border:1px solid rgba(201,148,26,.35);
@@ -307,12 +437,22 @@ section{padding:clamp(64px,8vw,110px) 6vw;position:relative}
   width:120px;height:120px;border-radius:50%;
   background:rgba(255,255,255,.06);
 }
-.team-avatar{
-  width:90px;height:90px;border-radius:50%;
-  border:3px solid rgba(255,255,255,.3);
-  background:var(--warm);
-  display:flex;align-items:center;justify-content:center;
-  font-size:36px;margin-bottom:14px;
+/* Photo avatar in team card */
+.team-avatar-photo{
+  background:none !important;
+  width:100px;height:100px;border-radius:50%;
+  overflow:hidden;
+  border:3px solid rgba(255,255,255,.5);
+  box-shadow:0 0 0 5px rgba(255,255,255,.12), 0 8px 32px rgba(0,0,0,.25);
+  flex-shrink:0;
+  margin-bottom:14px;
+}
+.team-avatar-photo img{
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:center 15%;
+  display:block;
+  border-radius:50%;
 }
 .team-name{
   font-family:'Playfair Display',serif;
@@ -708,7 +848,19 @@ footer strong{color:rgba(255,255,255,.65)}
   text-align:center;font-size:11px;color:rgba(255,255,255,.25);
   margin:10px 0;letter-spacing:1px;
 }
-/* ===== TOAST ===== */
+/* Tabs */
+.adm-tabs{display:flex;gap:6px;margin-bottom:24px;flex-wrap:wrap;}
+.adm-tab{
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+  color:rgba(255,255,255,.5);border-radius:100px;padding:8px 18px;
+  cursor:pointer;font-size:12px;font-weight:600;letter-spacing:.5px;
+  font-family:'DM Sans',sans-serif;transition:all .2s;
+}
+.adm-tab:hover{background:rgba(255,255,255,.1);color:rgba(255,255,255,.8)}
+.adm-tab.active{background:rgba(201,148,26,.25);border-color:rgba(201,148,26,.6);color:var(--taupe);}
+.adm-ed-label{display:block;font-size:11px;letter-spacing:1px;color:rgba(255,255,255,.45);text-transform:uppercase;margin-bottom:5px;}
+.adm-tab-content{min-height:100px;}
+</style>
 .toast-msg{
   position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(20px);
   background:#2A1F0A;color:#fff;padding:12px 24px;
@@ -733,53 +885,71 @@ footer strong{color:rgba(255,255,255,.65)}
 </nav>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="hero-content">
-    <div class="htag"><span>🌸</span> Programa Antiinflamatorio</div>
-    <h1 class="htitle">ÁU<em>REA</em></h1>
-    <p class="hsubtitle">Nutrición antiinflamatoria para la menopausia y perimenopausia — porque este cambio merece una guía experta.</p>
-    <ul class="h-features">
-      <li>Inflamación, cambios hormonales y síntomas que nadie te explicó bien</li>
-      <li>Alimentación que cuida tu cuerpo en esta etapa única</li>
-      <li>Acompañamiento profesional personalizado 100% online</li>
-    </ul>
-    <div class="hctas">
-      <a href="#" onclick="abrirModal();return false" class="btn-primary">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-        Ver el programa
-      </a>
-      <a href="#inscritos" class="btn-secondary">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-        Área de inscritas
-      </a>
+<section class="hero-new" id="inicio">
+  <!-- === IMAGEN PRINCIPAL: MUJER === -->
+  <div class="hn-top">
+    <img src="images/BalancePro1.jpg" alt="Mujer con alimentación antiinflamatoria ÁUREA" class="hn-img-top">
+    <div class="hn-overlay"></div>
+    <!-- Contenido sobre la imagen -->
+    <div class="hn-content">
+      <div class="htag"><span>✦</span> <span id="ed-hero-tag">Programa Antiinflamatorio</span></div>
+      <h1 class="htitle" style="font-size:clamp(42px,6.5vw,80px);letter-spacing:-1px;line-height:1;">BALANCE<br><em style="font-style:italic;color:#F0D98A;font-size:1.05em;letter-spacing:2px;text-shadow:0 0 40px rgba(240,217,138,.35);">PRO</em></h1>
+      <p class="hsubtitle" id="ed-hero-sub">Nutrición antiinflamatoria para la menopausia y perimenopausia — porque este cambio merece una guía experta.</p>
+      <ul class="h-features">
+        <li id="ed-hero-f1">Inflamación, cambios hormonales y síntomas que nadie te explicó bien</li>
+        <li id="ed-hero-f2">Alimentación que cuida tu cuerpo en esta etapa única</li>
+        <li id="ed-hero-f3">Acompañamiento profesional personalizado 100% online</li>
+      </ul>
+      <div class="hctas">
+        <a href="#" onclick="abrirModal();return false" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          Ver el programa
+        </a>
+        <a href="#inscritos" class="btn-secondary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          Área de inscritas
+        </a>
+      </div>
+    </div>
+    <!-- Floating stats -->
+    <div class="hn-stats">
+      <div class="hn-stat">
+        <div class="hn-stat-icon">🌿</div>
+        <div>
+          <div class="hn-stat-label">Enfoque</div>
+          <div class="hn-stat-val">Antiinflamatorio</div>
+        </div>
+      </div>
+      <div class="hn-stat-div"></div>
+      <div class="hn-stat">
+        <div class="hn-stat-icon">👩‍⚕️</div>
+        <div>
+          <div class="hn-stat-label">Profesionales</div>
+          <div class="hn-stat-val">2 especialistas</div>
+        </div>
+      </div>
+      <div class="hn-stat-div"></div>
+      <div class="hn-stat">
+        <div class="hn-stat-icon">📱</div>
+        <div>
+          <div class="hn-stat-label">Modalidad</div>
+          <div class="hn-stat-val">100% Online</div>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="hero-visual">
-    <div class="hero-card">
-      <div class="hc-tag">✦ 100% Online</div>
-      <div class="hc-title">Un programa creado para <em>esta</em> etapa</div>
-      <div class="hc-stat">
-        <div class="hc-stat-icon">🌿</div>
-        <div>
-          <div class="hc-stat-label">Enfoque</div>
-          <div class="hc-stat-value">Antiinflamatorio</div>
-        </div>
-      </div>
-      <div class="hc-stat">
-        <div class="hc-stat-icon">👩‍⚕️</div>
-        <div>
-          <div class="hc-stat-label">Profesionales</div>
-          <div class="hc-stat-value">2 especialistas</div>
-        </div>
-      </div>
-      <div class="hc-stat">
-        <div class="hc-stat-icon">📱</div>
-        <div>
-          <div class="hc-stat-label">Acceso</div>
-          <div class="hc-stat-value">Contenido + Seguimiento</div>
-        </div>
-      </div>
+
+  <!-- === IMAGEN SECUNDARIA: FOOD === -->
+  <div class="hn-bottom">
+    <img src="images/BalancePro.jpg" alt="Plato antiinflamatorio ÁUREA — Sabor, Equilibrio y Bienestar" class="hn-img-bottom">
+    <div class="hn-bottom-overlay"></div>
+    <div class="hn-bottom-label">
+      <span class="hn-bl-title">Sabor · Equilibrio · Bienestar</span>
+      <span class="hn-bl-sub">para tu Salud Hormonal</span>
     </div>
+    <a href="#programa" onclick="abrirModal();return false" class="hn-cta-strip">
+      Conocé el programa completo →
+    </a>
   </div>
 </section>
 
@@ -886,33 +1056,37 @@ footer strong{color:rgba(255,255,255,.65)}
   <div class="team-grid rv">
     <div class="team-card">
       <div class="team-header">
-        <div class="team-avatar">🌿</div>
-        <div class="team-name">Zulimar Rivero</div>
-        <div class="team-role">Licenciada en Nutrición</div>
+        <div class="team-avatar team-avatar-photo">
+          <img src="images/zuly.jpeg" alt="Zulimar Rivero — Licenciada en Nutrición">
+        </div>
+        <div class="team-name" id="ed-p1-nombre">Zulimar Rivero</div>
+        <div class="team-role" id="ed-p1-rol">Licenciada en Nutrición</div>
       </div>
       <div class="team-body">
-        <p class="team-bio">Nutricionista especializada en salud femenina y alimentación funcional. Su enfoque integra la ciencia de la nutrición con las necesidades reales de la mujer en la menopausia y perimenopausia, diseñando planes personalizados y sostenibles.</p>
+        <p class="team-bio" id="ed-p1-bio">Nutricionista especializada en salud femenina y alimentación funcional. Su enfoque integra la ciencia de la nutrición con las necesidades reales de la mujer en la menopausia y perimenopausia, diseñando planes personalizados y sostenibles.</p>
         <ul class="team-specialties">
-          <li>Nutrición antiinflamatoria para la mujer</li>
-          <li>Regulación hormonal a través de la alimentación</li>
-          <li>Manejo del peso en etapas hormonales</li>
-          <li>Planes alimentarios personalizados</li>
+          <li id="ed-p1-e1">Nutrición antiinflamatoria para la mujer</li>
+          <li id="ed-p1-e2">Regulación hormonal a través de la alimentación</li>
+          <li id="ed-p1-e3">Manejo del peso en etapas hormonales</li>
+          <li id="ed-p1-e4">Planes alimentarios personalizados</li>
         </ul>
       </div>
     </div>
     <div class="team-card">
       <div class="team-header" style="background:linear-gradient(135deg,#5C3A00 0%,#A8760E 100%)">
-        <div class="team-avatar">✨</div>
-        <div class="team-name">Gabriela Mejias</div>
-        <div class="team-role">Health Coach Certificada</div>
+        <div class="team-avatar team-avatar-photo">
+          <img src="images/gabi.jpeg" alt="Gabriela Mejias — Health Coach Certificada">
+        </div>
+        <div class="team-name" id="ed-p2-nombre">Gabriela Mejias</div>
+        <div class="team-role" id="ed-p2-rol">Health Coach Certificada</div>
       </div>
       <div class="team-body">
-        <p class="team-bio">Health coach con formación en salud integral y bienestar femenino. Gabriela trabaja los aspectos emocionales y de estilo de vida que acompañan los cambios hormonales, brindando herramientas concretas para sostener el proceso.</p>
+        <p class="team-bio" id="ed-p2-bio">Health coach con formación en salud integral y bienestar femenino. Gabriela trabaja los aspectos emocionales y de estilo de vida que acompañan los cambios hormonales, brindando herramientas concretas para sostener el proceso.</p>
         <ul class="team-specialties">
-          <li>Coaching para el bienestar hormonal</li>
-          <li>Gestión del estrés y calidad de sueño</li>
-          <li>Construcción de hábitos saludables duraderos</li>
-          <li>Acompañamiento emocional en la transición</li>
+          <li id="ed-p2-e1">Coaching para el bienestar hormonal</li>
+          <li id="ed-p2-e2">Gestión del estrés y calidad de sueño</li>
+          <li id="ed-p2-e3">Construcción de hábitos saludables duraderos</li>
+          <li id="ed-p2-e4">Acompañamiento emocional en la transición</li>
         </ul>
       </div>
     </div>
@@ -989,69 +1163,154 @@ footer strong{color:rgba(255,255,255,.65)}
       <!-- PANEL ADMINISTRADOR -->
       <div class="portal-area adm-panel" id="adminArea">
         <div class="portal-title">🔐 Panel Administrador — <span id="adminNombre"></span></div>
-        <p style="font-size:13px;color:rgba(255,255,255,.55);margin-bottom:28px;">Desde acá podés cargar, editar y gestionar todos los materiales del programa ÁUREA.</p>
+        <p style="font-size:13px;color:rgba(255,255,255,.55);margin-bottom:20px;">Gestioná materiales, inscritas y el contenido del sitio — sin ayuda técnica.</p>
 
-        <!-- PDFs -->
-        <div class="portal-section">
-          <div class="ps-label">📄 PDFs del Programa</div>
-          <div id="adminPdfList" style="display:flex;flex-direction:column;gap:12px;margin-bottom:20px;"></div>
-          <div class="adm-add-box">
-            <div class="adm-add-title">➕ Agregar nuevo PDF</div>
-            <input type="text" id="newPdfNombre" class="lb-input" placeholder="Nombre del PDF (ej: Guía Semana 2)">
-            <input type="text" id="newPdfMeta" class="lb-input" placeholder="Descripción corta (ej: PDF · Plan semana 2)">
-            <div class="adm-upload-row">
-              <label class="adm-file-btn" for="newPdfFile">📁 Elegir archivo PDF</label>
-              <input type="file" id="newPdfFile" accept=".pdf,application/pdf" style="display:none" onchange="onPdfFileSelected(this)">
-              <span id="newPdfFileLabel" class="adm-file-label">Sin archivo seleccionado</span>
+        <!-- TABS -->
+        <div class="adm-tabs">
+          <button class="adm-tab active" onclick="switchTab('materiales',this)">📁 Materiales</button>
+          <button class="adm-tab" onclick="switchTab('inscritas',this)">👥 Inscritas</button>
+          <button class="adm-tab" onclick="switchTab('editor',this)">✏️ Editor del Sitio</button>
+        </div>
+
+        <!-- TAB: MATERIALES -->
+        <div class="adm-tab-content" id="tab-materiales">
+          <div class="portal-section">
+            <div class="ps-label">📄 PDFs del Programa</div>
+            <div id="adminPdfList" style="display:flex;flex-direction:column;gap:12px;margin-bottom:20px;"></div>
+            <div class="adm-add-box">
+              <div class="adm-add-title">➕ Agregar nuevo PDF</div>
+              <input type="text" id="newPdfNombre" class="lb-input" placeholder="Nombre del PDF (ej: Guía Semana 2)">
+              <input type="text" id="newPdfMeta" class="lb-input" placeholder="Descripción corta (ej: PDF · Plan semana 2)">
+              <div class="adm-upload-row">
+                <label class="adm-file-btn" for="newPdfFile">📁 Elegir archivo PDF</label>
+                <input type="file" id="newPdfFile" accept=".pdf,application/pdf" style="display:none" onchange="onPdfFileSelected(this)">
+                <span id="newPdfFileLabel" class="adm-file-label">Sin archivo seleccionado</span>
+              </div>
+              <div class="adm-divider">— o pegá un link externo —</div>
+              <input type="text" id="newPdfUrl" class="adm-input" placeholder="https://drive.google.com/..." style="margin-bottom:12px;">
+              <button class="lb-btn" onclick="addPdf()">✅ Guardar PDF →</button>
             </div>
-            <div class="adm-divider">— o pegá un link externo —</div>
-            <input type="text" id="newPdfUrl" class="adm-input" placeholder="https://drive.google.com/... o Dropbox, etc." style="margin-bottom:12px;">
-            <button class="lb-btn" onclick="addPdf()" style="margin-top:4px;">✅ Guardar PDF →</button>
           </div>
-        </div>
-
-        <!-- Videos -->
-        <div class="portal-section" style="margin-top:32px;">
-          <div class="ps-label">🎥 Videos del Programa</div>
-          <div id="adminVideoList" style="display:flex;flex-direction:column;gap:12px;margin-bottom:20px;"></div>
-          <div class="adm-add-box">
-            <div class="adm-add-title">➕ Agregar nuevo Video</div>
-            <input type="text" id="newVideoNombre" class="lb-input" placeholder="Nombre de la clase (ej: Clase 5 — Recetas prácticas)">
-            <input type="text" id="newVideoMeta" class="lb-input" placeholder="Descripción (ej: Video · 40 min · Zulimar Rivero)">
-            <div class="adm-upload-row">
-              <label class="adm-file-btn" for="newVideoFile">🎬 Elegir archivo de video</label>
-              <input type="file" id="newVideoFile" accept="video/*" style="display:none" onchange="onVideoFileSelected(this)">
-              <span id="newVideoFileLabel" class="adm-file-label">Sin archivo seleccionado</span>
+          <div class="portal-section" style="margin-top:28px;">
+            <div class="ps-label">🎥 Videos del Programa</div>
+            <div id="adminVideoList" style="display:flex;flex-direction:column;gap:12px;margin-bottom:20px;"></div>
+            <div class="adm-add-box">
+              <div class="adm-add-title">➕ Agregar nuevo Video</div>
+              <input type="text" id="newVideoNombre" class="lb-input" placeholder="Nombre de la clase">
+              <input type="text" id="newVideoMeta" class="lb-input" placeholder="Descripción (ej: Video · 40 min · Zulimar Rivero)">
+              <div class="adm-upload-row">
+                <label class="adm-file-btn" for="newVideoFile">🎬 Elegir archivo de video</label>
+                <input type="file" id="newVideoFile" accept="video/*" style="display:none" onchange="onVideoFileSelected(this)">
+                <span id="newVideoFileLabel" class="adm-file-label">Sin archivo seleccionado</span>
+              </div>
+              <div class="adm-divider">— o pegá un link (YouTube, Vimeo, Drive) —</div>
+              <input type="text" id="newVideoUrl" class="adm-input" placeholder="https://youtube.com/watch?v=..." style="margin-bottom:12px;">
+              <button class="lb-btn" onclick="addVideo()">✅ Guardar Video →</button>
             </div>
-            <div class="adm-divider">— o pegá un link (YouTube, Vimeo, Drive) —</div>
-            <input type="text" id="newVideoUrl" class="adm-input" placeholder="https://youtube.com/watch?v=... o Vimeo, etc." style="margin-bottom:12px;">
-            <button class="lb-btn" onclick="addVideo()" style="margin-top:4px;">✅ Guardar Video →</button>
           </div>
-        </div>
+          <div style="margin-top:20px;background:rgba(255,255,255,.06);border-radius:14px;padding:16px;font-size:12px;color:rgba(255,255,255,.45);line-height:1.8;">
+            <strong style="color:rgba(255,255,255,.75);">💡 Consejo:</strong> Para que las inscritas puedan ver los materiales desde cualquier dispositivo, usá links externos de Google Drive, Dropbox o YouTube en lugar de subir archivos directamente.
+          </div>
+        </div><!-- /tab-materiales -->
 
-        <div style="margin-top:28px;background:rgba(255,255,255,.06);border-radius:14px;padding:18px;font-size:12px;color:rgba(255,255,255,.5);line-height:1.8;">
-          <strong style="color:rgba(255,255,255,.8);">💡 Cómo cargar materiales</strong><br><br>
-          <strong style="color:var(--taupe);">PDFs:</strong> Elegí el archivo directamente desde tu computadora o celular — se guarda en el navegador. También podés pegar un link de Google Drive o Dropbox.<br><br>
-          <strong style="color:var(--taupe);">Videos:</strong> Pegá el link de YouTube (puede ser privado/no listado), Vimeo o Google Drive. Los videos de YouTube se reproducen dentro del portal automáticamente.<br><br>
-          <strong style="color:rgba(255,153,0,.8);">⚠️ Nota:</strong> Los archivos subidos directamente se guardan en este navegador. Para que las inscritas los vean desde otros dispositivos, usá links externos (Drive, Dropbox, YouTube).
-        </div>
-
-        <!-- INSCRITAS MANAGER -->
-        <div class="portal-section" style="margin-top:36px;">
-          <div class="ps-label">👥 Gestión de Inscritas</div>
-          <div id="adminInscritasList" style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px;"></div>
-          <div class="adm-add-box">
-            <div class="adm-add-title">➕ Agregar nueva inscrita</div>
-            <input type="text"  id="newInscritaNombre" class="lb-input" placeholder="Nombre completo (ej: María González)">
-            <input type="email" id="newInscritaEmail"  class="lb-input" placeholder="Email (será su usuario de acceso)">
-            <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
-              <input type="text" id="newInscritaPass" class="adm-input" placeholder="Contraseña" style="flex:1;min-width:160px;">
-              <button onclick="generarPass()" style="background:rgba(201,148,26,.2);border:1px solid rgba(201,148,26,.4);color:var(--taupe);border-radius:8px;padding:10px 14px;cursor:pointer;font-size:12px;font-family:'DM Sans',sans-serif;white-space:nowrap;">🎲 Generar</button>
+        <!-- TAB: INSCRITAS -->
+        <div class="adm-tab-content" id="tab-inscritas" style="display:none;">
+          <div class="portal-section">
+            <div class="ps-label">👥 Inscritas activas</div>
+            <div id="adminInscritasList" style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px;"></div>
+            <div class="adm-add-box">
+              <div class="adm-add-title">➕ Agregar nueva inscrita</div>
+              <input type="text"  id="newInscritaNombre" class="lb-input" placeholder="Nombre completo (ej: María González)">
+              <input type="email" id="newInscritaEmail"  class="lb-input" placeholder="Email (será su usuario de acceso)">
+              <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+                <input type="text" id="newInscritaPass" class="adm-input" placeholder="Contraseña" style="flex:1;min-width:160px;">
+                <button onclick="generarPass()" style="background:rgba(201,148,26,.2);border:1px solid rgba(201,148,26,.4);color:var(--taupe);border-radius:8px;padding:10px 14px;cursor:pointer;font-size:12px;font-family:'DM Sans',sans-serif;white-space:nowrap;">🎲 Generar</button>
+              </div>
+              <input type="text" id="newInscritaNota" class="adm-input" placeholder="Nota interna (ej: Programa 4 semanas)" style="margin-top:10px;margin-bottom:12px;">
+              <button class="lb-btn" onclick="addInscrita()">✅ Crear acceso →</button>
             </div>
-            <input type="text" id="newInscritaNota" class="adm-input" placeholder="Nota interna (opcional — ej: Programa 4 semanas)" style="margin-top:10px;margin-bottom:12px;">
-            <button class="lb-btn" onclick="addInscrita()" style="margin-top:4px;">✅ Crear acceso →</button>
           </div>
-        </div>
+        </div><!-- /tab-inscritas -->
+
+        <!-- TAB: EDITOR DEL SITIO -->
+        <div class="adm-tab-content" id="tab-editor" style="display:none;">
+          <div class="portal-section">
+
+            <div class="adm-add-box" style="margin-bottom:16px;">
+              <div class="adm-add-title">✏️ Nombre del programa</div>
+              <p style="font-size:12px;color:rgba(255,255,255,.4);margin-bottom:10px;">Este nombre reemplazará "ÁUREA" en todos los textos visibles del sitio. Se guarda en este navegador.</p>
+              <input type="text" id="ed-prog-nombre-in" class="adm-input" placeholder="ÁUREA" style="margin-bottom:12px;">
+              <button class="lb-btn" onclick="guardarNombrePrograma()">💾 Guardar nombre →</button>
+            </div>
+
+            <div class="adm-add-box" style="margin-bottom:16px;">
+              <div class="adm-add-title">📞 WhatsApp del programa</div>
+              <p style="font-size:12px;color:rgba(255,255,255,.4);margin-bottom:10px;">Solo el número con código de país, sin espacios ni símbolos. Ej: 5491126507059</p>
+              <input type="text" id="ed-wa-num" class="adm-input" placeholder="5491126507059" style="margin-bottom:12px;">
+              <button class="lb-btn" onclick="guardarWA()">💾 Guardar WhatsApp →</button>
+            </div>
+
+            <div class="adm-add-box" style="margin-bottom:16px;">
+              <div class="adm-add-title">🌟 Hero — Textos principales</div>
+              <label class="adm-ed-label">Etiqueta del hero (ej: Programa Antiinflamatorio)</label>
+              <input type="text" id="ed-hero-tag-in" class="adm-input" style="margin-bottom:10px;">
+              <label class="adm-ed-label" style="margin-top:4px;">Subtítulo del hero</label>
+              <textarea id="ed-hero-sub-in" class="adm-input" rows="2" style="resize:vertical;"></textarea>
+              <label class="adm-ed-label" style="margin-top:10px;">Punto destacado 1</label>
+              <input type="text" id="ed-hero-f1-in" class="adm-input">
+              <label class="adm-ed-label" style="margin-top:8px;">Punto destacado 2</label>
+              <input type="text" id="ed-hero-f2-in" class="adm-input">
+              <label class="adm-ed-label" style="margin-top:8px;">Punto destacado 3</label>
+              <input type="text" id="ed-hero-f3-in" class="adm-input" style="margin-bottom:12px;">
+              <button class="lb-btn" onclick="guardarHero()">💾 Guardar Hero →</button>
+            </div>
+
+            <div class="adm-add-box" style="margin-bottom:16px;">
+              <div class="adm-add-title">👩‍⚕️ Profesional 1</div>
+              <label class="adm-ed-label">Nombre</label>
+              <input type="text" id="ed-p1-nombre-in" class="adm-input">
+              <label class="adm-ed-label" style="margin-top:8px;">Rol / Título profesional</label>
+              <input type="text" id="ed-p1-rol-in" class="adm-input">
+              <label class="adm-ed-label" style="margin-top:8px;">Biografía</label>
+              <textarea id="ed-p1-bio-in" class="adm-input" rows="3" style="resize:vertical;"></textarea>
+              <label class="adm-ed-label" style="margin-top:8px;">Especialidad 1</label>
+              <input type="text" id="ed-p1-e1-in" class="adm-input">
+              <label class="adm-ed-label" style="margin-top:6px;">Especialidad 2</label>
+              <input type="text" id="ed-p1-e2-in" class="adm-input">
+              <label class="adm-ed-label" style="margin-top:6px;">Especialidad 3</label>
+              <input type="text" id="ed-p1-e3-in" class="adm-input">
+              <label class="adm-ed-label" style="margin-top:6px;">Especialidad 4</label>
+              <input type="text" id="ed-p1-e4-in" class="adm-input" style="margin-bottom:12px;">
+              <button class="lb-btn" onclick="guardarProf(1)">💾 Guardar Profesional 1 →</button>
+            </div>
+
+            <div class="adm-add-box" style="margin-bottom:16px;">
+              <div class="adm-add-title">👩‍💼 Profesional 2</div>
+              <label class="adm-ed-label">Nombre</label>
+              <input type="text" id="ed-p2-nombre-in" class="adm-input">
+              <label class="adm-ed-label" style="margin-top:8px;">Rol / Título profesional</label>
+              <input type="text" id="ed-p2-rol-in" class="adm-input">
+              <label class="adm-ed-label" style="margin-top:8px;">Biografía</label>
+              <textarea id="ed-p2-bio-in" class="adm-input" rows="3" style="resize:vertical;"></textarea>
+              <label class="adm-ed-label" style="margin-top:8px;">Especialidad 1</label>
+              <input type="text" id="ed-p2-e1-in" class="adm-input">
+              <label class="adm-ed-label" style="margin-top:6px;">Especialidad 2</label>
+              <input type="text" id="ed-p2-e2-in" class="adm-input">
+              <label class="adm-ed-label" style="margin-top:6px;">Especialidad 3</label>
+              <input type="text" id="ed-p2-e3-in" class="adm-input">
+              <label class="adm-ed-label" style="margin-top:6px;">Especialidad 4</label>
+              <input type="text" id="ed-p2-e4-in" class="adm-input" style="margin-bottom:12px;">
+              <button class="lb-btn" onclick="guardarProf(2)">💾 Guardar Profesional 2 →</button>
+            </div>
+
+            <div class="adm-add-box">
+              <div class="adm-add-title">📋 Descripción del programa (ventana emergente)</div>
+              <textarea id="ed-modal-desc-in" class="adm-input" rows="4" style="resize:vertical;margin-bottom:12px;"></textarea>
+              <button class="lb-btn" onclick="guardarModalDesc()">💾 Guardar Descripción →</button>
+            </div>
+
+          </div>
+        </div><!-- /tab-editor -->
 
         <button onclick="cerrarPortal()" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.5);border-radius:100px;padding:8px 20px;cursor:pointer;font-size:12px;margin-top:28px;font-family:'DM Sans',sans-serif;">Cerrar sesión</button>
       </div>
@@ -1137,11 +1396,11 @@ footer strong{color:rgba(255,255,255,.65)}
 </section>
 
 <footer>
-  <p><strong>ÁUREA · Programa Antiinflamatorio</strong> &nbsp;·&nbsp; Nutrición para Menopausia y Perimenopausia &nbsp;·&nbsp; © 2026</p>
+  <p><strong id="ed-footer-nombre">ÁUREA · Programa Antiinflamatorio</strong> &nbsp;·&nbsp; Nutrición para Menopausia y Perimenopausia &nbsp;·&nbsp; © 2026</p>
 </footer>
 
 <!-- WhatsApp flotante -->
-<a href="https://wa.me/5491126507059?text=Hola!%20Me%20interesa%20el%20programa%20ÁUREA%20🌸" target="_blank" class="waf" aria-label="WhatsApp">
+<a id="wa-float" href="https://wa.me/5491126507059?text=Hola!%20Me%20interesa%20el%20programa%20ÁUREA%20🌸" target="_blank" class="waf" aria-label="WhatsApp">
   <div class="waf-tip">¡Hablemos!</div>
   <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
@@ -1150,12 +1409,12 @@ footer strong{color:rgba(255,255,255,.65)}
 <div class="modal-ov" id="mdProg">
   <div class="modal-bx">
     <button class="modal-x" onclick="cerrarModal()">✕</button>
-    <div class="modal-h">ÁUREA — Programa Antiinflamatorio</div>
+    <div class="modal-h" id="ed-modal-nombre">ÁUREA — Programa Antiinflamatorio</div>
     <div class="modal-sub">Nutrición & Coaching para Menopausia y Perimenopausia</div>
 
     <div class="modal-sec">
-      <h3>¿Qué es ÁUREA?</h3>
-      <p>Un programa integral de nutrición antiinflamatoria y coaching de bienestar diseñado específicamente para mujeres en etapa de menopausia y perimenopausia. Combina ciencia nutricional con acompañamiento personalizado para transformar esta etapa en una oportunidad de brillar.</p>
+      <h3 id="ed-modal-que">¿Qué es ÁUREA?</h3>
+      <p id="ed-modal-desc">Un programa integral de nutrición antiinflamatoria y coaching de bienestar diseñado específicamente para mujeres en etapa de menopausia y perimenopausia. Combina ciencia nutricional con acompañamiento personalizado para transformar esta etapa en una oportunidad de brillar.</p>
     </div>
 
     <div class="modal-sec">
@@ -1364,10 +1623,6 @@ function cerrarPortal(){
   document.getElementById('loginPass').value = '';
 }
 
-window.addEventListener('load', () => {
-  const raw = sessionStorage.getItem('aurea_auth');
-  if(raw){ try { const s=JSON.parse(raw); mostrarPortal(s.email,s.role,s.nombre); } catch(e){ sessionStorage.removeItem('aurea_auth'); } }
-});
 
 document.addEventListener('keydown', function(e){
   if(e.key==='Enter'){
@@ -1662,14 +1917,268 @@ function mostrarToast(msg){
   setTimeout(()=>{ t.classList.remove('show'); setTimeout(()=>t.remove(),400); },3000);
 }
 
-// === WHATSAPP FORM ===
+// === TAB SWITCHER ===
+function switchTab(tab, btn){
+  document.querySelectorAll('.adm-tab-content').forEach(el=>el.style.display='none');
+  document.querySelectorAll('.adm-tab').forEach(el=>el.classList.remove('active'));
+  document.getElementById('tab-'+tab).style.display='block';
+  btn.classList.add('active');
+  if(tab==='editor') cargarEditorValues();
+  if(tab==='inscritas') renderAdminPanel();
+}
+
+// === SITE EDITOR — storage key ===
+function getSiteContent(){
+  try{ const r=localStorage.getItem('aurea_content'); if(r) return JSON.parse(r); }catch(e){}
+  return {};
+}
+function saveSiteContent(obj){ localStorage.setItem('aurea_content',JSON.stringify(obj)); }
+
+// === NOMBRE DEL PROGRAMA ===
+function guardarNombrePrograma(){
+  const val = document.getElementById('ed-prog-nombre-in').value.trim();
+  if(!val){ mostrarToast('Ingresá un nombre válido'); return; }
+  const c = getSiteContent();
+  c['prog-nombre'] = val;
+  saveSiteContent(c);
+  aplicarNombrePrograma(val);
+  mostrarToast('✅ Nombre guardado: ' + val);
+}
+
+/*
+  aplicarNombrePrograma(nombre)
+  ─────────────────────────────
+  Reemplaza TODAS las ocurrencias del nombre del programa en:
+   • Nodos de texto visibles (body, excluyendo SCRIPT/STYLE/INPUT/TEXTAREA)
+   • Atributo placeholder de inputs/textareas
+   • Atributos href (links wa.me y cualquier otro que lo contenga)
+   • <title> del documento
+   • <meta name="description" content="…">
+
+  Estrategia "data-orig":
+    La primera vez que se toca un nodo/atributo se guarda el valor
+    ORIGINAL en un atributo data-orig-* (o en un dataset para texto).
+    Las llamadas siguientes siempre parten del original, por lo que
+    el administrador puede cambiar el nombre varias veces sin problemas.
+*/
+function aplicarNombrePrograma(nombre){
+  if(!nombre) return;
+  const ORIG = 'ÁUREA';
+
+  // ── 1. Nodos de texto ──────────────────────────────────────────────
+  function replaceTextNodes(node){
+    if(node.nodeType === Node.TEXT_NODE){
+      // Guardar original si todavía no lo hicimos
+      if(!node._origText && node.textContent.includes(ORIG)){
+        node._origText = node.textContent;
+      }
+      const base = node._origText || node.textContent;
+      if(base.includes(ORIG)){
+        node.textContent = base.split(ORIG).join(nombre);
+      }
+    } else if(node.nodeType === Node.ELEMENT_NODE){
+      const tag = node.tagName;
+      if(['SCRIPT','STYLE','INPUT','TEXTAREA'].includes(tag)) return;
+      node.childNodes.forEach(replaceTextNodes);
+    }
+  }
+  replaceTextNodes(document.body);
+
+  // ── 2. Placeholders (inputs / textareas) ──────────────────────────
+  document.querySelectorAll('[placeholder]').forEach(el => {
+    if(!el.dataset.origPlaceholder && el.placeholder.includes(ORIG)){
+      el.dataset.origPlaceholder = el.placeholder;
+    }
+    const base = el.dataset.origPlaceholder || el.placeholder;
+    if(base && base.includes(ORIG)){
+      el.placeholder = base.split(ORIG).join(nombre);
+    }
+  });
+
+  // ── 3. Links href que contengan ÁUREA (wa.me y otros) ─────────────
+  document.querySelectorAll('a[href]').forEach(a => {
+    if(!a.dataset.origHref && decodeURIComponent(a.href).includes(ORIG)){
+      a.dataset.origHref = a.getAttribute('href');
+    }
+    const base = a.dataset.origHref || a.getAttribute('href');
+    if(base && decodeURIComponent(base).includes(ORIG)){
+      // Reemplazamos en la versión decodificada y re-encodificamos
+      const decoded = decodeURIComponent(base).split(ORIG).join(nombre);
+      // Preservar estructura del href: separar la parte antes de ?text=
+      a.setAttribute('href', decoded.replace(/([?&]text=)(.+)/, (m,pre,txt) => pre + encodeURIComponent(decodeURIComponent(txt))));
+    }
+  });
+
+  // ── 4. <title> ────────────────────────────────────────────────────
+  if(!document._origTitle) document._origTitle = document.title;
+  if(document._origTitle.includes(ORIG)){
+    document.title = document._origTitle.split(ORIG).join(nombre);
+  }
+
+  // ── 5. <meta name="description"> ─────────────────────────────────
+  const metaDesc = document.querySelector('meta[name="description"]');
+  if(metaDesc){
+    if(!metaDesc.dataset.origContent) metaDesc.dataset.origContent = metaDesc.getAttribute('content') || '';
+    const base = metaDesc.dataset.origContent;
+    if(base.includes(ORIG)){
+      metaDesc.setAttribute('content', base.split(ORIG).join(nombre));
+    }
+  }
+
+  // ── 6. Logo del nav (.nlogo) — reconstruir preservando el <span> ──
+  const nlogo = document.querySelector('.nlogo');
+  if(nlogo){
+    if(!nlogo.dataset.origNombre) nlogo.dataset.origNombre = ORIG;
+    const n = nombre.toUpperCase();
+    if(n.length > 3){
+      nlogo.innerHTML = n.slice(0,-3) + '<span>' + n.slice(-3) + '</span>';
+    } else {
+      nlogo.innerHTML = '<span>' + n + '</span>';
+    }
+  }
+
+  // ── 7. Elementos con ID fijos que contienen el nombre ─────────────
+  // footer, modal header, modal h3 — se actualizan directamente
+  // usando el mismo patrón data-orig para soportar múltiples cambios
+  [
+    { id: 'ed-footer-nombre', orig: 'ÁUREA · Programa Antiinflamatorio',  tpl: (n) => `${n} · Programa Antiinflamatorio` },
+    { id: 'ed-modal-nombre',  orig: 'ÁUREA — Programa Antiinflamatorio',  tpl: (n) => `${n} — Programa Antiinflamatorio` },
+    { id: 'ed-modal-que',     orig: '¿Qué es ÁUREA?',                     tpl: (n) => `¿Qué es ${n}?` },
+  ].forEach(({ id, orig, tpl }) => {
+    const el = document.getElementById(id);
+    if(!el) return;
+    if(!el.dataset.origText) el.dataset.origText = orig;
+    el.textContent = tpl(nombre);
+  });
+}
+
+// Apply saved content to DOM on load
+function aplicarContenidoGuardado(){
+  const c = getSiteContent();
+  const set = (id,val)=>{ const el=document.getElementById(id); if(el&&val) el.textContent=val; };
+  set('ed-hero-tag',   c['hero-tag']);
+  set('ed-hero-sub',   c['hero-sub']);
+  set('ed-hero-f1',    c['hero-f1']);
+  set('ed-hero-f2',    c['hero-f2']);
+  set('ed-hero-f3',    c['hero-f3']);
+  set('ed-p1-nombre',  c['p1-nombre']);
+  set('ed-p1-rol',     c['p1-rol']);
+  set('ed-p1-bio',     c['p1-bio']);
+  set('ed-p1-e1',      c['p1-e1']);
+  set('ed-p1-e2',      c['p1-e2']);
+  set('ed-p1-e3',      c['p1-e3']);
+  set('ed-p1-e4',      c['p1-e4']);
+  set('ed-p2-nombre',  c['p2-nombre']);
+  set('ed-p2-rol',     c['p2-rol']);
+  set('ed-p2-bio',     c['p2-bio']);
+  set('ed-p2-e1',      c['p2-e1']);
+  set('ed-p2-e2',      c['p2-e2']);
+  set('ed-p2-e3',      c['p2-e3']);
+  set('ed-p2-e4',      c['p2-e4']);
+  set('ed-modal-desc', c['modal-desc']);
+  // Nombre del programa
+  if(c['prog-nombre']) aplicarNombrePrograma(c['prog-nombre']);
+  // WhatsApp links
+  if(c['wa-num']){
+    const num = c['wa-num'];
+    const progNombre = c['prog-nombre'] || 'ÁUREA';
+    const msg = encodeURIComponent(`Hola! Me interesa el programa ${progNombre} 🌸`);
+    const url = `https://wa.me/${num}?text=${msg}`;
+    document.querySelectorAll('a[href*="wa.me"]').forEach(a=>{ a.href=url; });
+  }
+}
+
+// Populate editor inputs with current values when tab opens
+function cargarEditorValues(){
+  const get = id => { const el=document.getElementById(id); return el ? el.textContent.trim() : ''; };
+  const setIn = (inId, val) => { const el=document.getElementById(inId); if(el) el.value=val; };
+  setIn('ed-hero-tag-in',    get('ed-hero-tag'));
+  setIn('ed-hero-sub-in',   get('ed-hero-sub'));
+  setIn('ed-hero-f1-in',    get('ed-hero-f1'));
+  setIn('ed-hero-f2-in',    get('ed-hero-f2'));
+  setIn('ed-hero-f3-in',    get('ed-hero-f3'));
+  setIn('ed-p1-nombre-in',  get('ed-p1-nombre'));
+  setIn('ed-p1-rol-in',     get('ed-p1-rol'));
+  setIn('ed-p1-bio-in',     get('ed-p1-bio'));
+  setIn('ed-p1-e1-in',      get('ed-p1-e1'));
+  setIn('ed-p1-e2-in',      get('ed-p1-e2'));
+  setIn('ed-p1-e3-in',      get('ed-p1-e3'));
+  setIn('ed-p1-e4-in',      get('ed-p1-e4'));
+  setIn('ed-p2-nombre-in',  get('ed-p2-nombre'));
+  setIn('ed-p2-rol-in',     get('ed-p2-rol'));
+  setIn('ed-p2-bio-in',     get('ed-p2-bio'));
+  setIn('ed-p2-e1-in',      get('ed-p2-e1'));
+  setIn('ed-p2-e2-in',      get('ed-p2-e2'));
+  setIn('ed-p2-e3-in',      get('ed-p2-e3'));
+  setIn('ed-p2-e4-in',      get('ed-p2-e4'));
+  setIn('ed-modal-desc-in', get('ed-modal-desc'));
+  // WhatsApp
+  const c = getSiteContent();
+  if(c['wa-num']) document.getElementById('ed-wa-num').value = c['wa-num'];
+  // Nombre del programa
+  if(c['prog-nombre']){ const el=document.getElementById('ed-prog-nombre-in'); if(el) el.value=c['prog-nombre']; }
+}
+
+function guardarWA(){
+  const num = document.getElementById('ed-wa-num').value.replace(/\D/g,'');
+  if(!num||num.length<8){ mostrarToast('⚠️ Ingresá un número válido'); return; }
+  const c = getSiteContent(); c['wa-num']=num; saveSiteContent(c);
+  aplicarContenidoGuardado();
+  mostrarToast('✅ WhatsApp actualizado en todo el sitio');
+}
+
+function guardarHero(){
+  const c = getSiteContent();
+  const v = id => document.getElementById(id)?.value.trim()||'';
+  const set = (key,id,domId)=>{ const val=v(id); if(val){ c[key]=val; const el=document.getElementById(domId); if(el) el.textContent=val; }};
+  set('hero-tag','ed-hero-tag-in','ed-hero-tag');
+  set('hero-sub','ed-hero-sub-in','ed-hero-sub');
+  set('hero-f1','ed-hero-f1-in','ed-hero-f1');
+  set('hero-f2','ed-hero-f2-in','ed-hero-f2');
+  set('hero-f3','ed-hero-f3-in','ed-hero-f3');
+  saveSiteContent(c);
+  mostrarToast('✅ Hero actualizado');
+}
+
+function guardarProf(n){
+  const c = getSiteContent();
+  const v = id => document.getElementById(id)?.value.trim()||'';
+  const set = (key,id,domId)=>{ const val=v(id); if(val){ c[key]=val; const el=document.getElementById(domId); if(el) el.textContent=val; }};
+  set(`p${n}-nombre`,`ed-p${n}-nombre-in`,`ed-p${n}-nombre`);
+  set(`p${n}-rol`,   `ed-p${n}-rol-in`,   `ed-p${n}-rol`);
+  set(`p${n}-bio`,   `ed-p${n}-bio-in`,   `ed-p${n}-bio`);
+  set(`p${n}-e1`,    `ed-p${n}-e1-in`,    `ed-p${n}-e1`);
+  set(`p${n}-e2`,    `ed-p${n}-e2-in`,    `ed-p${n}-e2`);
+  set(`p${n}-e3`,    `ed-p${n}-e3-in`,    `ed-p${n}-e3`);
+  set(`p${n}-e4`,    `ed-p${n}-e4-in`,    `ed-p${n}-e4`);
+  saveSiteContent(c);
+  mostrarToast(`✅ Profesional ${n} actualizada`);
+}
+
+function guardarModalDesc(){
+  const val = document.getElementById('ed-modal-desc-in')?.value.trim();
+  if(!val){ mostrarToast('⚠️ Escribí algo primero'); return; }
+  const c = getSiteContent(); c['modal-desc']=val; saveSiteContent(c);
+  const el = document.getElementById('ed-modal-desc'); if(el) el.textContent=val;
+  mostrarToast('✅ Descripción actualizada');
+}
+
+// Apply on page load
+window.addEventListener('load', ()=>{
+  aplicarContenidoGuardado();
+  const raw = sessionStorage.getItem('aurea_auth');
+  if(raw){ try { const s=JSON.parse(raw); mostrarPortal(s.email,s.role,s.nombre); } catch(e){ sessionStorage.removeItem('aurea_auth'); } }
+});
 function enviarWA(e){
   e.preventDefault();
   const n=document.getElementById('cn').value;
   const t=document.getElementById('ct').value;
   const m=document.getElementById('cm').value;
-  const txt=`Hola! Soy ${n} (${t}). Me interesa el programa ÁUREA 🌸${m?'\n\n'+m:''}`;
-  window.open(`https://wa.me/5491126507059?text=${encodeURIComponent(txt)}`,'_blank');
+  const c=getSiteContent();
+  const progNombre = c['prog-nombre'] || 'ÁUREA';
+  const waNum = c['wa-num'] || '5491126507059';
+  const txt=`Hola! Soy ${n} (${t}). Me interesa el programa ${progNombre} 🌸${m?'\n\n'+m:''}`;
+  window.open(`https://wa.me/${waNum}?text=${encodeURIComponent(txt)}`,'_blank');
 }
 </script>
 <!-- VIDEO OVERLAY -->
