@@ -1,0 +1,1685 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ÁUREA — Programa de Nutrición Antiinflamatoria para Menopausia y Perimenopausia. Recuperá tu bienestar con acompañamiento profesional.">
+<title>ÁUREA · Programa Antiinflamatorio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --cr:#FDFAF3;
+  --warm:#F8F1E0;
+  --sand:#EEE0BB;
+  --taupe:#C9A96E;
+  --rose:#C9941A;
+  --deep-rose:#8B6210;
+  --sage:#C9941A;
+  --deep-sage:#7A5200;
+  --text:#2A1F0A;
+  --text-soft:#6B5530;
+  --text-light:#A8915A;
+  --white:#FFFFFF;
+  --sh: 0 6px 32px rgba(42,31,10,.10);
+  --shh: 0 16px 60px rgba(42,31,10,.20);
+  --gold:#C9941A;
+  --gold-dark:#8B6210;
+  --gold-pale:#FBF5DF;
+}
+
+html{scroll-behavior:smooth}
+body{background:var(--cr);font-family:'DM Sans',sans-serif;color:var(--text);overflow-x:hidden}
+
+/* ===== NAV ===== */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:14px 5vw;
+  background:rgba(253,250,243,.97);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(201,169,110,.3);
+}
+.nlogo{
+  font-family:'Playfair Display',serif;
+  font-size:22px;font-weight:700;letter-spacing:2px;
+  color:var(--deep-sage);text-decoration:none;
+}
+.nlogo span{color:var(--rose)}
+.nlinks{display:flex;gap:16px;align-items:center}
+.nlinks a{
+  font-size:12px;color:var(--text-soft);text-decoration:none;
+  letter-spacing:.6px;text-transform:uppercase;font-weight:500;
+  transition:color .2s;white-space:nowrap;
+}
+.nlinks a:hover{color:var(--deep-rose)}
+.nlinks .btn-nav{
+  background:var(--rose);color:#fff !important;
+  padding:9px 20px;border-radius:100px;
+  transition:background .2s !important;
+}
+.nlinks .btn-nav:hover{background:var(--deep-rose) !important}
+
+/* ===== HERO ===== */
+.hero{
+  min-height:100vh;
+  display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;
+  padding:110px 6vw 80px;
+  gap:40px;
+  position:relative;overflow:hidden;
+  background:linear-gradient(150deg, #FDFAF3 0%, #F8F1E0 60%, #EEE0BB 100%);
+}
+.hero::before{
+  content:'';position:absolute;top:-100px;right:-100px;
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle, rgba(201,148,26,.15) 0%, transparent 65%);
+  pointer-events:none;
+}
+.hero::after{
+  content:'';position:absolute;bottom:-80px;left:-80px;
+  width:400px;height:400px;border-radius:50%;
+  background:radial-gradient(circle, rgba(201,148,26,.10) 0%, transparent 65%);
+  pointer-events:none;
+}
+.hero-content{position:relative;z-index:1}
+.htag{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(201,148,26,.12);border:1px solid rgba(201,148,26,.35);
+  border-radius:100px;padding:6px 18px;margin-bottom:24px;
+  font-size:11px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--deep-sage);font-weight:600;
+  animation:fadeUp .7s ease both;
+}
+.htag span{font-size:14px}
+h1.htitle{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(52px,7.5vw,92px);
+  font-weight:700;line-height:.9;
+  color:var(--text);
+  margin-bottom:10px;
+  animation:fadeUp .7s .1s ease both;
+}
+h1.htitle em{color:var(--rose);font-style:italic}
+.hsubtitle{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(14px,1.8vw,18px);
+  font-style:italic;color:var(--text-soft);
+  margin-bottom:28px;line-height:1.6;
+  animation:fadeUp .7s .2s ease both;
+}
+.h-features{
+  display:flex;flex-direction:column;gap:10px;
+  margin-bottom:36px;
+  animation:fadeUp .7s .25s ease both;
+}
+.h-features li{
+  display:flex;align-items:center;gap:10px;
+  font-size:15px;color:var(--text-soft);list-style:none;line-height:1.5;
+}
+.h-features li::before{
+  content:'✦';font-size:9px;color:var(--rose);flex-shrink:0;
+}
+.hctas{display:flex;gap:14px;flex-wrap:wrap;animation:fadeUp .7s .3s ease both}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--rose);color:#fff;
+  padding:14px 30px;border-radius:100px;
+  font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;
+  text-decoration:none;
+  box-shadow:0 8px 30px rgba(201,148,26,.4);
+  transition:all .3s;
+}
+.btn-primary:hover{background:var(--deep-rose);transform:translateY(-2px)}
+.btn-secondary{
+  display:inline-flex;align-items:center;gap:10px;
+  background:transparent;color:var(--deep-sage);
+  padding:14px 28px;border-radius:100px;
+  font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;
+  text-decoration:none;border:2px solid var(--deep-sage);
+  transition:all .3s;
+}
+.btn-secondary:hover{background:var(--deep-sage);color:#fff}
+
+/* Hero visual */
+.hero-visual{
+  position:relative;z-index:1;
+  display:flex;justify-content:center;align-items:center;
+  animation:fadeUp .9s .15s ease both;
+}
+.hero-card{
+  background:var(--white);
+  border-radius:28px;padding:36px;
+  box-shadow:var(--shh);
+  max-width:340px;width:100%;
+  position:relative;
+}
+.hero-card::before{
+  content:'';position:absolute;inset:-12px;
+  border:2px solid var(--taupe);border-radius:36px;
+  opacity:.35;z-index:-1;
+}
+.hc-tag{
+  display:inline-block;background:rgba(196,121,106,.1);
+  color:var(--rose);font-size:10px;letter-spacing:2px;
+  text-transform:uppercase;font-weight:600;
+  padding:5px 12px;border-radius:100px;margin-bottom:18px;
+}
+.hc-title{
+  font-family:'Playfair Display',serif;
+  font-size:26px;font-weight:700;color:var(--text);
+  margin-bottom:20px;line-height:1.2;
+}
+.hc-stat{
+  display:flex;align-items:center;gap:14px;
+  padding:14px 0;border-top:1px solid var(--sand);
+}
+.hc-stat-icon{
+  width:42px;height:42px;border-radius:12px;
+  background:var(--warm);
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;flex-shrink:0;
+}
+.hc-stat-label{font-size:11px;color:var(--text-light);letter-spacing:.5px;margin-bottom:2px}
+.hc-stat-value{font-size:15px;font-weight:600;color:var(--text)}
+
+/* ===== SECTIONS GENERAL ===== */
+section{padding:clamp(64px,8vw,110px) 6vw;position:relative}
+.ey-label{
+  font-size:10px;letter-spacing:4px;text-transform:uppercase;
+  color:var(--rose);font-weight:600;margin-bottom:12px;
+  display:flex;align-items:center;gap:12px;
+}
+.ey-label::before{content:'';width:32px;height:1px;background:var(--rose)}
+.section-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(32px,4.5vw,54px);
+  font-weight:700;line-height:1.05;
+  color:var(--text);margin-bottom:16px;
+}
+.section-title em{font-style:italic;color:var(--rose)}
+.section-sub{
+  font-size:16px;color:var(--text-soft);
+  line-height:1.9;max-width:560px;
+}
+
+/* Reveal */
+.rv{opacity:0;transform:translateY(32px);transition:opacity .8s ease,transform .8s ease}
+.rv.on{opacity:1;transform:translateY(0)}
+
+/* ===== PROBLEMA SECTION ===== */
+.s-problema{
+  background:linear-gradient(160deg,#2A1F0A 0%,#1C1408 100%);
+  overflow:hidden;
+}
+.s-problema .ey-label{color:var(--taupe)}
+.s-problema .ey-label::before{background:var(--taupe)}
+.s-problema .section-title{color:#fff}
+.s-problema .section-title em{color:var(--taupe)}
+.s-problema .section-sub{color:rgba(255,255,255,.7);max-width:100%}
+.prob-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:52px;align-items:start;margin-top:44px;
+}
+.prob-quote{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(20px,2.8vw,34px);
+  font-style:italic;font-weight:400;
+  color:var(--taupe);line-height:1.4;
+  border-left:3px solid var(--taupe);
+  padding-left:24px;margin-bottom:20px;
+}
+.prob-info{
+  font-size:14px;color:rgba(255,255,255,.65);
+  line-height:1.85;
+  border-left:3px solid var(--taupe);
+  padding-left:24px;
+}
+.prob-info a{color:var(--taupe);font-weight:600}
+.check-list{list-style:none;display:flex;flex-direction:column;gap:14px}
+.check-list li{
+  display:flex;align-items:flex-start;gap:14px;
+  font-size:15px;color:rgba(255,255,255,.9);line-height:1.65;
+}
+.check-list li::before{
+  content:'✓';min-width:28px;height:28px;
+  background:rgba(255,255,255,.12);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;color:var(--taupe);flex-shrink:0;margin-top:2px;
+}
+
+/* ===== INFO ANTIINFLAMATORIA ===== */
+.s-info{background:var(--cr)}
+.info-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:22px;margin-top:44px;
+}
+.info-card{
+  background:var(--white);border:1px solid var(--sand);
+  border-radius:22px;padding:30px;
+  transition:all .3s;
+  position:relative;overflow:hidden;
+}
+.info-card::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--sage),var(--rose));
+  transform:scaleX(0);transform-origin:left;transition:transform .4s;
+}
+.info-card:hover{transform:translateY(-5px);box-shadow:var(--shh)}
+.info-card:hover::after{transform:scaleX(1)}
+.ic-icon{font-size:36px;margin-bottom:16px;display:block}
+.ic-title{
+  font-family:'Playfair Display',serif;
+  font-size:20px;font-weight:600;color:var(--text);margin-bottom:10px;
+}
+.ic-desc{font-size:13px;color:var(--text-soft);line-height:1.75}
+.ic-foods{
+  display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;
+}
+.ic-food{
+  background:var(--warm);color:var(--text-soft);
+  font-size:11px;padding:4px 10px;border-radius:100px;
+  border:1px solid var(--sand);
+}
+
+/* ===== PROFESIONALES ===== */
+.s-team{background:var(--warm)}
+.team-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:28px;margin-top:44px;
+}
+.team-card{
+  background:var(--white);border-radius:24px;
+  overflow:hidden;box-shadow:var(--sh);
+  border:1px solid var(--sand);
+  transition:all .3s;
+  display:flex;flex-direction:column;
+}
+.team-card:hover{transform:translateY(-4px);box-shadow:var(--shh)}
+.team-header{
+  background:linear-gradient(135deg,#7A5200 0%,#C9941A 100%);
+  padding:32px;position:relative;overflow:hidden;
+}
+.team-header::before{
+  content:'';position:absolute;top:-30px;right:-30px;
+  width:120px;height:120px;border-radius:50%;
+  background:rgba(255,255,255,.06);
+}
+.team-avatar{
+  width:90px;height:90px;border-radius:50%;
+  border:3px solid rgba(255,255,255,.3);
+  background:var(--warm);
+  display:flex;align-items:center;justify-content:center;
+  font-size:36px;margin-bottom:14px;
+}
+.team-name{
+  font-family:'Playfair Display',serif;
+  font-size:24px;font-weight:700;color:#fff;margin-bottom:4px;
+}
+.team-role{
+  font-size:11px;letter-spacing:2.5px;text-transform:uppercase;
+  color:rgba(255,255,255,.65);font-weight:500;
+}
+.team-body{padding:28px}
+.team-bio{font-size:14px;color:var(--text-soft);line-height:1.8;margin-bottom:18px}
+.team-specialties{list-style:none;display:flex;flex-direction:column;gap:8px}
+.team-specialties li{
+  font-size:13px;color:var(--text-soft);
+  display:flex;align-items:center;gap:8px;
+}
+.team-specialties li::before{content:'◆';font-size:7px;color:var(--rose)}
+
+/* ===== PASOS ===== */
+.s-pasos{background:var(--cr)}
+.pasos-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:0;border:1px solid var(--sand);border-radius:24px;
+  overflow:hidden;margin-top:44px;
+}
+.paso-item{
+  padding:32px 26px;border-right:1px solid var(--sand);
+  transition:background .3s;position:relative;
+}
+.paso-item:last-child{border-right:none}
+.paso-item:hover{background:var(--warm)}
+.paso-num{
+  font-family:'Playfair Display',serif;
+  font-size:58px;font-weight:700;
+  color:var(--taupe);line-height:1;margin-bottom:12px;
+  opacity:.5;
+}
+.paso-title{font-size:14px;font-weight:600;color:var(--text);margin-bottom:8px}
+.paso-desc{font-size:12px;color:var(--text-soft);line-height:1.75}
+
+/* ===== ÁREA DE INSCRITOS ===== */
+.s-inscritos{
+  background:linear-gradient(150deg,#2A1F0A 0%,#1C1408 100%);
+  position:relative;overflow:hidden;
+}
+.s-inscritos::before{
+  content:'';position:absolute;top:-100px;right:-100px;
+  width:400px;height:400px;border-radius:50%;
+  background:radial-gradient(circle,rgba(201,148,26,.18) 0%,transparent 65%);
+}
+.s-inscritos .ey-label{color:var(--taupe)}
+.s-inscritos .ey-label::before{background:var(--taupe)}
+.s-inscritos .section-title{color:#fff}
+.s-inscritos .section-title em{color:var(--taupe)}
+.s-inscritos .section-sub{color:rgba(255,255,255,.6)}
+
+/* Login box */
+.login-layout{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:52px;align-items:start;margin-top:44px;
+}
+.login-box{
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:20px;padding:36px;
+  backdrop-filter:blur(10px);
+}
+.lb-title{
+  font-family:'Playfair Display',serif;
+  font-size:22px;font-weight:600;color:#fff;margin-bottom:6px;
+}
+.lb-sub{font-size:13px;color:rgba(255,255,255,.5);margin-bottom:28px}
+.lb-label{
+  display:block;font-size:11px;letter-spacing:1.5px;
+  text-transform:uppercase;color:rgba(255,255,255,.5);
+  margin-bottom:6px;
+}
+.lb-input{
+  width:100%;background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.18);border-radius:10px;
+  color:#fff;font-family:'DM Sans',sans-serif;
+  font-size:14px;padding:13px 16px;outline:none;
+  margin-bottom:16px;transition:border-color .2s,background .2s;
+}
+.lb-input::placeholder{color:rgba(255,255,255,.28)}
+.lb-input:focus{border-color:var(--taupe);background:rgba(255,255,255,.12)}
+.lb-btn{
+  width:100%;background:var(--rose);border:none;
+  border-radius:100px;color:#fff;
+  font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;
+  letter-spacing:1.5px;text-transform:uppercase;
+  padding:14px;cursor:pointer;transition:all .3s;
+  box-shadow:0 8px 24px rgba(201,148,26,.35);
+}
+.lb-btn:hover{background:var(--deep-rose);transform:translateY(-2px)}
+
+/* Portal área */
+.portal-area{
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:20px;padding:36px;
+  display:none;
+}
+.portal-area.visible{display:block}
+.portal-title{
+  font-family:'Playfair Display',serif;
+  font-size:22px;font-weight:600;color:#fff;margin-bottom:20px;
+}
+.portal-section{margin-bottom:28px}
+.ps-label{
+  font-size:10px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--taupe);font-weight:600;margin-bottom:14px;
+  display:flex;align-items:center;gap:10px;
+}
+.ps-label::before{content:'';width:20px;height:1px;background:var(--taupe)}
+.material-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.mat-item{
+  display:flex;align-items:center;gap:14px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+  border-radius:12px;padding:14px 18px;
+  cursor:pointer;transition:all .25s;text-decoration:none;
+}
+.mat-item:hover{background:rgba(255,255,255,.12);transform:translateX(4px)}
+.mat-icon{
+  width:38px;height:38px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;flex-shrink:0;
+}
+.mat-icon.pdf{background:rgba(196,121,106,.2)}
+.mat-icon.video{background:rgba(107,140,116,.2)}
+.mat-info{flex:1}
+.mat-name{font-size:14px;font-weight:500;color:#fff;margin-bottom:2px}
+.mat-meta{font-size:11px;color:rgba(255,255,255,.45)}
+.mat-action{
+  font-size:11px;color:var(--taupe);font-weight:600;
+  letter-spacing:.5px;white-space:nowrap;
+}
+
+/* Lado derecho info inscritos */
+.inscritos-info{display:flex;flex-direction:column;gap:18px}
+.ii-card{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:16px;padding:22px;
+}
+.ii-card-title{
+  font-size:11px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--taupe);margin-bottom:12px;font-weight:600;
+}
+.ii-card ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.ii-card li{
+  font-size:13px;color:rgba(255,255,255,.75);
+  display:flex;align-items:center;gap:8px;
+}
+.ii-card li::before{content:'→';color:var(--taupe)}
+
+/* ===== CONTACTO ===== */
+.s-contacto{
+  background:linear-gradient(155deg,#C9941A 0%,#8B6210 100%);
+  color:#fff;
+}
+.s-contacto .ey-label{color:rgba(255,255,255,.6)}
+.s-contacto .ey-label::before{background:rgba(255,255,255,.6)}
+.s-contacto .section-title{color:#fff}
+.s-contacto .section-title em{color:rgba(255,255,255,.75)}
+.contacto-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;margin-top:44px}
+.cf-label{
+  display:block;font-size:11px;letter-spacing:1.5px;
+  text-transform:uppercase;color:rgba(255,255,255,.55);
+  margin-bottom:6px;
+}
+.cf-input{
+  width:100%;background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.25);border-radius:10px;
+  color:#fff;font-family:'DM Sans',sans-serif;
+  font-size:14px;padding:13px 16px;outline:none;
+  margin-bottom:16px;transition:all .2s;
+}
+.cf-input::placeholder{color:rgba(255,255,255,.35)}
+.cf-input:focus{border-color:rgba(255,255,255,.6);background:rgba(255,255,255,.18)}
+textarea.cf-input{resize:vertical;min-height:90px}
+.cf-btn{
+  width:100%;background:#fff;color:var(--deep-rose);
+  border:none;border-radius:100px;
+  font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;
+  padding:15px;cursor:pointer;transition:all .3s;
+  box-shadow:0 8px 24px rgba(0,0,0,.2);
+}
+.cf-btn:hover{background:var(--warm);transform:translateY(-2px)}
+.c-info{display:flex;flex-direction:column;gap:16px}
+.c-wa{
+  display:flex;align-items:center;gap:16px;
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);
+  border-radius:16px;padding:18px 22px;
+  text-decoration:none;color:#fff;transition:all .3s;
+}
+.c-wa:hover{background:rgba(255,255,255,.2);transform:translateX(4px)}
+.c-wa-icon{
+  width:44px;height:44px;background:#25D366;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.c-wa-l{font-size:10px;color:rgba(255,255,255,.55);letter-spacing:1px;margin-bottom:2px}
+.c-wa-n{font-size:17px;font-weight:600}
+.c-blq{
+  background:rgba(255,255,255,.1);border-radius:14px;padding:20px;
+}
+.c-blq-t{
+  font-size:11px;letter-spacing:2px;text-transform:uppercase;
+  color:rgba(255,255,255,.6);margin-bottom:12px;font-weight:600;
+}
+.c-blq ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.c-blq li{
+  font-size:13px;color:rgba(255,255,255,.85);
+  display:flex;align-items:center;gap:10px;
+}
+.c-blq li::before{content:'◆';font-size:7px;color:rgba(255,255,255,.5)}
+
+/* ===== FOOTER ===== */
+footer{
+  background:#1C1408;color:rgba(255,255,255,.4);
+  text-align:center;padding:28px 20px;
+  font-size:12px;letter-spacing:.8px;
+}
+footer strong{color:rgba(255,255,255,.65)}
+
+/* ===== WA FLOAT ===== */
+.waf{
+  position:fixed;bottom:28px;right:28px;z-index:999;
+  width:60px;height:60px;background:#25D366;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 24px rgba(37,211,102,.45);
+  text-decoration:none;transition:all .3s;
+  animation:pulse 2.5s infinite;
+}
+.waf:hover{transform:scale(1.1)}
+.waf svg{width:30px;height:30px;fill:#fff}
+.waf-tip{
+  position:absolute;right:72px;top:50%;transform:translateY(-50%);
+  background:var(--text);color:#fff;white-space:nowrap;
+  font-size:12px;padding:7px 14px;border-radius:8px;
+  opacity:0;pointer-events:none;transition:opacity .2s;
+  font-family:'DM Sans',sans-serif;
+}
+.waf:hover .waf-tip{opacity:1}
+
+/* ===== MODAL ===== */
+.modal-ov{
+  display:none;position:fixed;inset:0;
+  background:rgba(0,0,0,.65);z-index:9999;
+  overflow-y:auto;padding:20px 16px;
+}
+.modal-ov.on{display:flex;align-items:flex-start;justify-content:center}
+.modal-bx{
+  background:var(--cr);border-radius:20px;
+  max-width:740px;width:100%;padding:40px 36px;
+  position:relative;box-shadow:0 20px 60px rgba(0,0,0,.3);margin:auto;
+}
+.modal-x{
+  position:absolute;top:16px;right:20px;
+  font-size:22px;cursor:pointer;
+  color:var(--text-soft);background:none;border:none;line-height:1;padding:4px 8px;
+}
+.modal-x:hover{color:var(--rose)}
+.modal-h{
+  font-family:'Playfair Display',serif;
+  font-size:24px;font-weight:700;color:var(--text);margin-bottom:4px;
+}
+.modal-sub{font-size:11px;color:var(--rose);text-transform:uppercase;letter-spacing:1px;margin-bottom:24px;font-weight:600}
+.modal-sec{margin-bottom:18px}
+.modal-sec h3{
+  font-size:11px;font-weight:700;letter-spacing:1px;
+  color:var(--deep-sage);text-transform:uppercase;
+  margin-bottom:8px;border-left:3px solid var(--sage);padding-left:10px;
+}
+.modal-sec p,.modal-sec li{font-size:13px;color:var(--text-soft);line-height:1.7}
+.modal-sec ul{padding-left:16px;margin:0}
+.modal-sec li{margin-bottom:4px}
+.modal-2col{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
+.modal-card{background:var(--warm);border-radius:12px;padding:14px}
+.modal-card strong{display:block;font-size:12px;font-weight:600;color:var(--text);margin-bottom:4px}
+.modal-card span{font-size:12px;color:var(--text-soft)}
+.modal-warn{
+  background:rgba(196,121,106,.08);border:1px solid var(--taupe);
+  border-radius:10px;padding:12px 16px;
+  font-size:12px;color:var(--text-soft);margin-top:16px;
+}
+.modal-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+.modal-btn{
+  flex:1;min-width:160px;padding:12px 18px;border-radius:100px;
+  text-align:center;font-weight:600;font-size:13px;
+  cursor:pointer;border:none;text-decoration:none;display:block;
+  letter-spacing:.5px;
+}
+.modal-btn-p{background:var(--rose);color:#fff}
+.modal-btn-s{border:2px solid var(--rose);color:var(--rose);background:transparent}
+
+/* ===== ANIMACIONES ===== */
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{
+  0%,100%{box-shadow:0 6px 24px rgba(37,211,102,.45)}
+  50%{box-shadow:0 6px 40px rgba(37,211,102,.75)}
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;padding:100px 5vw 60px;gap:40px}
+  .hero-visual{order:-1}
+  .hero-card{max-width:360px;margin:0 auto}
+  .info-grid{grid-template-columns:1fr}
+  .team-grid{grid-template-columns:1fr}
+  .pasos-grid{grid-template-columns:repeat(2,1fr)}
+  .paso-item:nth-child(2){border-right:none}
+  .paso-item:nth-child(3){border-top:1px solid var(--sand)}
+  .login-layout{grid-template-columns:1fr;gap:28px}
+  .contacto-grid{grid-template-columns:1fr;gap:28px}
+  .prob-grid{grid-template-columns:1fr;gap:28px}
+}
+@media(max-width:600px){
+  .pasos-grid{grid-template-columns:1fr}
+  .paso-item{border-right:none;border-bottom:1px solid var(--sand)}
+  .paso-item:last-child{border-bottom:none}
+  .modal-bx{padding:28px 20px}
+  .modal-2col{grid-template-columns:1fr}
+  .modal-ctas{flex-direction:column}
+  .nlinks a:not(.btn-nav){display:none}
+  .waf{bottom:18px;right:18px;width:52px;height:52px}
+}
+/* ===== ADMIN PANEL ===== */
+.adm-panel{}
+.adm-item{
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+  border-radius:12px;padding:16px;
+}
+.adm-item-info{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:6px}
+.adm-item-name{font-size:14px;color:#fff;font-weight:500}
+.adm-item-url{font-size:11px;color:rgba(255,255,255,.5)}
+.adm-input{
+  width:100%;background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.2);border-radius:8px;
+  color:#fff;font-family:'DM Sans',sans-serif;font-size:13px;
+  padding:10px 14px;outline:none;transition:all .2s;
+}
+.adm-input:focus{border-color:var(--taupe);background:rgba(255,255,255,.15)}
+.adm-input::placeholder{color:rgba(255,255,255,.3)}
+.adm-add-box{
+  background:rgba(255,255,255,.04);border:1px dashed rgba(255,255,255,.15);
+  border-radius:14px;padding:20px;
+}
+.adm-add-title{
+  font-size:11px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--taupe);margin-bottom:14px;font-weight:600;
+}
+
+/* ===== VIDEO OVERLAY ===== */
+.video-overlay{
+  display:none;position:fixed;inset:0;
+  background:rgba(0,0,0,.9);z-index:9999;
+  flex-direction:column;align-items:center;justify-content:center;
+  padding:20px;
+}
+.video-overlay.on{display:flex}
+.video-header{
+  display:flex;justify-content:space-between;align-items:center;
+  width:100%;max-width:900px;margin-bottom:14px;
+}
+.video-header span{color:#fff;font-size:16px;font-weight:600;font-family:'DM Sans',sans-serif}
+.video-close{
+  background:rgba(255,255,255,.15);border:none;color:#fff;
+  font-size:20px;cursor:pointer;border-radius:50%;
+  width:36px;height:36px;display:flex;align-items:center;justify-content:center;
+}
+.video-close:hover{background:rgba(255,255,255,.25)}
+.video-iframe{
+  width:100%;max-width:900px;aspect-ratio:16/9;
+  border:none;border-radius:12px;background:#000;
+}
+
+/* Upload row */
+.adm-upload-row{display:flex;align-items:center;gap:12px;margin-bottom:10px;flex-wrap:wrap}
+.adm-file-btn{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(201,148,26,.25);border:1px solid rgba(201,148,26,.5);
+  color:var(--taupe);border-radius:8px;padding:9px 16px;
+  font-size:12px;font-weight:600;cursor:pointer;
+  font-family:'DM Sans',sans-serif;letter-spacing:.5px;
+  transition:all .2s;white-space:nowrap;
+}
+.adm-file-btn:hover{background:rgba(201,148,26,.4);border-color:var(--taupe)}
+.adm-file-label{font-size:12px;color:rgba(255,255,255,.4);font-style:italic}
+.adm-file-label.loaded{color:rgba(120,255,120,.7);font-style:normal;font-weight:600}
+.adm-divider{
+  text-align:center;font-size:11px;color:rgba(255,255,255,.25);
+  margin:10px 0;letter-spacing:1px;
+}
+/* ===== TOAST ===== */
+.toast-msg{
+  position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(20px);
+  background:#2A1F0A;color:#fff;padding:12px 24px;
+  border-radius:100px;font-size:14px;font-family:'DM Sans',sans-serif;
+  opacity:0;transition:all .3s;z-index:99999;white-space:nowrap;
+  box-shadow:0 8px 30px rgba(0,0,0,.4);border:1px solid var(--taupe);
+}
+.toast-msg.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nlogo">ÁU<span>REA</span></a>
+  <div class="nlinks">
+    <a href="#programa" onclick="abrirModal();return false">El Programa</a>
+    <a href="#profesionales">Profesionales</a>
+    <a href="#inscritos">Área de Inscritas</a>
+    <a href="https://wa.me/5491126507059?text=Hola!%20Me%20interesa%20el%20programa%20ÁUREA%20🌸" target="_blank" class="btn-nav">Consultar</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="htag"><span>🌸</span> Programa Antiinflamatorio</div>
+    <h1 class="htitle">ÁU<em>REA</em></h1>
+    <p class="hsubtitle">Nutrición antiinflamatoria para la menopausia y perimenopausia — porque este cambio merece una guía experta.</p>
+    <ul class="h-features">
+      <li>Inflamación, cambios hormonales y síntomas que nadie te explicó bien</li>
+      <li>Alimentación que cuida tu cuerpo en esta etapa única</li>
+      <li>Acompañamiento profesional personalizado 100% online</li>
+    </ul>
+    <div class="hctas">
+      <a href="#" onclick="abrirModal();return false" class="btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        Ver el programa
+      </a>
+      <a href="#inscritos" class="btn-secondary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        Área de inscritas
+      </a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-card">
+      <div class="hc-tag">✦ 100% Online</div>
+      <div class="hc-title">Un programa creado para <em>esta</em> etapa</div>
+      <div class="hc-stat">
+        <div class="hc-stat-icon">🌿</div>
+        <div>
+          <div class="hc-stat-label">Enfoque</div>
+          <div class="hc-stat-value">Antiinflamatorio</div>
+        </div>
+      </div>
+      <div class="hc-stat">
+        <div class="hc-stat-icon">👩‍⚕️</div>
+        <div>
+          <div class="hc-stat-label">Profesionales</div>
+          <div class="hc-stat-value">2 especialistas</div>
+        </div>
+      </div>
+      <div class="hc-stat">
+        <div class="hc-stat-icon">📱</div>
+        <div>
+          <div class="hc-stat-label">Acceso</div>
+          <div class="hc-stat-value">Contenido + Seguimiento</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEMA -->
+<section class="s-problema" id="problema">
+  <div class="ey-label rv">La realidad de esta etapa</div>
+  <h2 class="section-title rv">No es tu <em>imaginación.</em><br>Es inflamación.</h2>
+  <p class="section-sub rv">La menopausia y perimenopausia generan cambios hormonales que favorecen la inflamación crónica. Una alimentación antiinflamatoria puede ser la clave que transformó tu bienestar.</p>
+  <div class="prob-grid rv">
+    <div>
+      <p class="prob-quote">"La dieta antiinflamatoria puede mejorar significativamente los síntomas de la menopausia regulando el equilibrio hormonal y reduciendo la inflamación sistémica."</p>
+      <p class="prob-info">Según información especializada, este tipo de alimentación actúa directamente sobre los mecanismos que generan sofocos, cambios de ánimo, dificultad para dormir y el aumento de peso típico de esta etapa.</p>
+    </div>
+    <ul class="check-list">
+      <li>Reducís sofocos y síntomas vasomotores</li>
+      <li>Mejorás la calidad del sueño naturalmente</li>
+      <li>Controlás el aumento de peso hormonal</li>
+      <li>Protegés huesos y corazón con cada comida</li>
+      <li>Mejorás el estado de ánimo y la energía</li>
+      <li>Cuidás tu microbiota intestinal</li>
+    </ul>
+  </div>
+</section>
+
+<!-- INFO ANTIINFLAMATORIA -->
+<section class="s-info" id="programa">
+  <div class="ey-label rv">El método</div>
+  <h2 class="section-title rv">Qué <em>incluye</em><br>la alimentación antiinflamatoria</h2>
+  <p class="section-sub rv">Alimentos que trabajan con tus hormonas, no en su contra. Basado en evidencia científica adaptada a tu etapa de vida.</p>
+  <div class="info-grid rv">
+    <div class="info-card">
+      <span class="ic-icon">🫐</span>
+      <div class="ic-title">Antioxidantes Clave</div>
+      <p class="ic-desc">Frutas y vegetales ricos en flavonoides que combaten el estrés oxidativo y regulan la respuesta hormonal.</p>
+      <div class="ic-foods">
+        <span class="ic-food">Arándanos</span>
+        <span class="ic-food">Espinaca</span>
+        <span class="ic-food">Cúrcuma</span>
+        <span class="ic-food">Jengibre</span>
+      </div>
+    </div>
+    <div class="info-card">
+      <span class="ic-icon">🐟</span>
+      <div class="ic-title">Omega-3 Esenciales</div>
+      <p class="ic-desc">Ácidos grasos que reducen la inflamación, protegen el corazón y mejoran la función cerebral durante la transición hormonal.</p>
+      <div class="ic-foods">
+        <span class="ic-food">Salmón</span>
+        <span class="ic-food">Chía</span>
+        <span class="ic-food">Nueces</span>
+        <span class="ic-food">Lino</span>
+      </div>
+    </div>
+    <div class="info-card">
+      <span class="ic-icon">🌾</span>
+      <div class="ic-title">Fibra & Probióticos</div>
+      <p class="ic-desc">El eje intestino-hormonas es fundamental. Una microbiota equilibrada mejora el metabolismo de estrógenos y reduce síntomas.</p>
+      <div class="ic-foods">
+        <span class="ic-food">Kéfir</span>
+        <span class="ic-food">Avena</span>
+        <span class="ic-food">Legumbres</span>
+        <span class="ic-food">Fermentados</span>
+      </div>
+    </div>
+    <div class="info-card">
+      <span class="ic-icon">🥦</span>
+      <div class="ic-title">Fitoestrógenos</div>
+      <p class="ic-desc">Compuestos vegetales que actúan como estrógenos débiles, ayudando a suavizar la transición hormonal de forma natural.</p>
+      <div class="ic-foods">
+        <span class="ic-food">Soja</span>
+        <span class="ic-food">Lino</span>
+        <span class="ic-food">Tofu</span>
+        <span class="ic-food">Legumbres</span>
+      </div>
+    </div>
+    <div class="info-card">
+      <span class="ic-icon">🦴</span>
+      <div class="ic-title">Calcio & Vitamina D</div>
+      <p class="ic-desc">En la menopausia la protección ósea es prioridad. Fortalecemos el esqueleto con alimentos específicos y luz solar.</p>
+      <div class="ic-foods">
+        <span class="ic-food">Lácteos</span>
+        <span class="ic-food">Almendras</span>
+        <span class="ic-food">Brócoli</span>
+        <span class="ic-food">Sardinitas</span>
+      </div>
+    </div>
+    <div class="info-card">
+      <span class="ic-icon">🚫</span>
+      <div class="ic-title">Lo que evitamos</div>
+      <p class="ic-desc">Reducir los alimentos proinflamatorios es igual de importante. Te enseñamos a identificarlos y reemplazarlos sin sacrificar el placer.</p>
+      <div class="ic-foods">
+        <span class="ic-food">Ultra-procesados</span>
+        <span class="ic-food">Azúcar refinada</span>
+        <span class="ic-food">Grasas trans</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROFESIONALES -->
+<section class="s-team" id="profesionales">
+  <div class="ey-label rv">Quiénes te acompañan</div>
+  <h2 class="section-title rv">Tus <em>profesionales</em><br>de confianza</h2>
+  <p class="section-sub rv">Un equipo especializado creado específicamente para acompañarte en esta etapa tan importante de tu vida.</p>
+  <div class="team-grid rv">
+    <div class="team-card">
+      <div class="team-header">
+        <div class="team-avatar">🌿</div>
+        <div class="team-name">Zulimar Rivero</div>
+        <div class="team-role">Licenciada en Nutrición</div>
+      </div>
+      <div class="team-body">
+        <p class="team-bio">Nutricionista especializada en salud femenina y alimentación funcional. Su enfoque integra la ciencia de la nutrición con las necesidades reales de la mujer en la menopausia y perimenopausia, diseñando planes personalizados y sostenibles.</p>
+        <ul class="team-specialties">
+          <li>Nutrición antiinflamatoria para la mujer</li>
+          <li>Regulación hormonal a través de la alimentación</li>
+          <li>Manejo del peso en etapas hormonales</li>
+          <li>Planes alimentarios personalizados</li>
+        </ul>
+      </div>
+    </div>
+    <div class="team-card">
+      <div class="team-header" style="background:linear-gradient(135deg,#5C3A00 0%,#A8760E 100%)">
+        <div class="team-avatar">✨</div>
+        <div class="team-name">Gabriela Mejias</div>
+        <div class="team-role">Health Coach Certificada</div>
+      </div>
+      <div class="team-body">
+        <p class="team-bio">Health coach con formación en salud integral y bienestar femenino. Gabriela trabaja los aspectos emocionales y de estilo de vida que acompañan los cambios hormonales, brindando herramientas concretas para sostener el proceso.</p>
+        <ul class="team-specialties">
+          <li>Coaching para el bienestar hormonal</li>
+          <li>Gestión del estrés y calidad de sueño</li>
+          <li>Construcción de hábitos saludables duraderos</li>
+          <li>Acompañamiento emocional en la transición</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PASOS -->
+<section class="s-pasos">
+  <div class="ey-label rv">Cómo funciona</div>
+  <h2 class="section-title rv">Tu camino hacia el <em>equilibrio</em></h2>
+  <div class="pasos-grid rv">
+    <div class="paso-item">
+      <div class="paso-num">01</div>
+      <div class="paso-title">Evaluación inicial</div>
+      <p class="paso-desc">Completás tu perfil de salud y síntomas actuales para que podamos personalizar tu plan.</p>
+    </div>
+    <div class="paso-item">
+      <div class="paso-num">02</div>
+      <div class="paso-title">Plan personalizado</div>
+      <p class="paso-desc">Zulimar diseña tu plan antiinflamatorio adaptado a tu etapa, preferencias y objetivos.</p>
+    </div>
+    <div class="paso-item">
+      <div class="paso-num">03</div>
+      <div class="paso-title">Acompañamiento</div>
+      <p class="paso-desc">Gabriela te acompaña semanalmente en el proceso de incorporar los cambios de forma sostenible.</p>
+    </div>
+    <div class="paso-item">
+      <div class="paso-num">04</div>
+      <div class="paso-title">Bienestar sostenible</div>
+      <p class="paso-desc">Con herramientas concretas y acceso al material, construís tu nueva forma de vivir esta etapa.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ÁREA DE INSCRITAS -->
+<section class="s-inscritos" id="inscritos">
+  <div class="ey-label rv">Acceso exclusivo</div>
+  <h2 class="section-title rv">Área de <em>Inscritas</em></h2>
+  <p class="section-sub rv">Accedé a todo tu material: guías en PDF descargables, clases en video y recursos exclusivos del programa.</p>
+  <div class="login-layout rv">
+    <!-- LOGIN BOX -->
+    <div>
+      <div class="login-box" id="loginBox">
+        <div class="lb-title">Iniciá sesión</div>
+        <div class="lb-sub">Ingresá con tu usuario y contraseña del programa</div>
+        <label class="lb-label">Usuario / Email</label>
+        <input type="email" id="loginUser" class="lb-input" placeholder="tuemail@correo.com">
+        <label class="lb-label">Contraseña</label>
+        <input type="password" id="loginPass" class="lb-input" placeholder="••••••••">
+        <div id="loginError" style="display:none;background:rgba(196,121,106,.2);border:1px solid var(--rose);border-radius:8px;padding:10px 14px;font-size:12px;color:#ffb3a7;margin-bottom:14px;"></div>
+        <button class="lb-btn" onclick="loginPortal()">Ingresar al Portal →</button>
+        <p style="font-size:12px;color:rgba(255,255,255,.4);margin-top:14px;text-align:center">¿No tenés acceso? <a href="#contacto" style="color:var(--taupe);font-weight:600;text-decoration:none">Contactanos</a></p>
+      </div>
+
+      <!-- PORTAL INSCRITAS (visible after login as inscrita) -->
+      <div class="portal-area" id="portalArea">
+        <div class="portal-title">✨ Bienvenida, <span id="portalNombre"></span></div>
+
+        <!-- PDFs -->
+        <div class="portal-section">
+          <div class="ps-label">📄 Guías PDF (descargables)</div>
+          <ul class="material-list" id="portalPdfList"></ul>
+        </div>
+
+        <!-- VIDEOS -->
+        <div class="portal-section">
+          <div class="ps-label">🎥 Clases en Video (visualización)</div>
+          <ul class="material-list" id="portalVideoList"></ul>
+        </div>
+
+        <button onclick="cerrarPortal()" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.5);border-radius:100px;padding:8px 20px;cursor:pointer;font-size:12px;margin-top:8px;font-family:'DM Sans',sans-serif;">Cerrar sesión</button>
+      </div>
+
+      <!-- PANEL ADMINISTRADOR -->
+      <div class="portal-area adm-panel" id="adminArea">
+        <div class="portal-title">🔐 Panel Administrador — <span id="adminNombre"></span></div>
+        <p style="font-size:13px;color:rgba(255,255,255,.55);margin-bottom:28px;">Desde acá podés cargar, editar y gestionar todos los materiales del programa ÁUREA.</p>
+
+        <!-- PDFs -->
+        <div class="portal-section">
+          <div class="ps-label">📄 PDFs del Programa</div>
+          <div id="adminPdfList" style="display:flex;flex-direction:column;gap:12px;margin-bottom:20px;"></div>
+          <div class="adm-add-box">
+            <div class="adm-add-title">➕ Agregar nuevo PDF</div>
+            <input type="text" id="newPdfNombre" class="lb-input" placeholder="Nombre del PDF (ej: Guía Semana 2)">
+            <input type="text" id="newPdfMeta" class="lb-input" placeholder="Descripción corta (ej: PDF · Plan semana 2)">
+            <div class="adm-upload-row">
+              <label class="adm-file-btn" for="newPdfFile">📁 Elegir archivo PDF</label>
+              <input type="file" id="newPdfFile" accept=".pdf,application/pdf" style="display:none" onchange="onPdfFileSelected(this)">
+              <span id="newPdfFileLabel" class="adm-file-label">Sin archivo seleccionado</span>
+            </div>
+            <div class="adm-divider">— o pegá un link externo —</div>
+            <input type="text" id="newPdfUrl" class="adm-input" placeholder="https://drive.google.com/... o Dropbox, etc." style="margin-bottom:12px;">
+            <button class="lb-btn" onclick="addPdf()" style="margin-top:4px;">✅ Guardar PDF →</button>
+          </div>
+        </div>
+
+        <!-- Videos -->
+        <div class="portal-section" style="margin-top:32px;">
+          <div class="ps-label">🎥 Videos del Programa</div>
+          <div id="adminVideoList" style="display:flex;flex-direction:column;gap:12px;margin-bottom:20px;"></div>
+          <div class="adm-add-box">
+            <div class="adm-add-title">➕ Agregar nuevo Video</div>
+            <input type="text" id="newVideoNombre" class="lb-input" placeholder="Nombre de la clase (ej: Clase 5 — Recetas prácticas)">
+            <input type="text" id="newVideoMeta" class="lb-input" placeholder="Descripción (ej: Video · 40 min · Zulimar Rivero)">
+            <div class="adm-upload-row">
+              <label class="adm-file-btn" for="newVideoFile">🎬 Elegir archivo de video</label>
+              <input type="file" id="newVideoFile" accept="video/*" style="display:none" onchange="onVideoFileSelected(this)">
+              <span id="newVideoFileLabel" class="adm-file-label">Sin archivo seleccionado</span>
+            </div>
+            <div class="adm-divider">— o pegá un link (YouTube, Vimeo, Drive) —</div>
+            <input type="text" id="newVideoUrl" class="adm-input" placeholder="https://youtube.com/watch?v=... o Vimeo, etc." style="margin-bottom:12px;">
+            <button class="lb-btn" onclick="addVideo()" style="margin-top:4px;">✅ Guardar Video →</button>
+          </div>
+        </div>
+
+        <div style="margin-top:28px;background:rgba(255,255,255,.06);border-radius:14px;padding:18px;font-size:12px;color:rgba(255,255,255,.5);line-height:1.8;">
+          <strong style="color:rgba(255,255,255,.8);">💡 Cómo cargar materiales</strong><br><br>
+          <strong style="color:var(--taupe);">PDFs:</strong> Elegí el archivo directamente desde tu computadora o celular — se guarda en el navegador. También podés pegar un link de Google Drive o Dropbox.<br><br>
+          <strong style="color:var(--taupe);">Videos:</strong> Pegá el link de YouTube (puede ser privado/no listado), Vimeo o Google Drive. Los videos de YouTube se reproducen dentro del portal automáticamente.<br><br>
+          <strong style="color:rgba(255,153,0,.8);">⚠️ Nota:</strong> Los archivos subidos directamente se guardan en este navegador. Para que las inscritas los vean desde otros dispositivos, usá links externos (Drive, Dropbox, YouTube).
+        </div>
+
+        <!-- INSCRITAS MANAGER -->
+        <div class="portal-section" style="margin-top:36px;">
+          <div class="ps-label">👥 Gestión de Inscritas</div>
+          <div id="adminInscritasList" style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px;"></div>
+          <div class="adm-add-box">
+            <div class="adm-add-title">➕ Agregar nueva inscrita</div>
+            <input type="text"  id="newInscritaNombre" class="lb-input" placeholder="Nombre completo (ej: María González)">
+            <input type="email" id="newInscritaEmail"  class="lb-input" placeholder="Email (será su usuario de acceso)">
+            <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+              <input type="text" id="newInscritaPass" class="adm-input" placeholder="Contraseña" style="flex:1;min-width:160px;">
+              <button onclick="generarPass()" style="background:rgba(201,148,26,.2);border:1px solid rgba(201,148,26,.4);color:var(--taupe);border-radius:8px;padding:10px 14px;cursor:pointer;font-size:12px;font-family:'DM Sans',sans-serif;white-space:nowrap;">🎲 Generar</button>
+            </div>
+            <input type="text" id="newInscritaNota" class="adm-input" placeholder="Nota interna (opcional — ej: Programa 4 semanas)" style="margin-top:10px;margin-bottom:12px;">
+            <button class="lb-btn" onclick="addInscrita()" style="margin-top:4px;">✅ Crear acceso →</button>
+          </div>
+        </div>
+
+        <button onclick="cerrarPortal()" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.5);border-radius:100px;padding:8px 20px;cursor:pointer;font-size:12px;margin-top:28px;font-family:'DM Sans',sans-serif;">Cerrar sesión</button>
+      </div>
+    </div>
+
+    <!-- INFO LATERAL -->
+    <div class="inscritos-info">
+      <div class="ii-card">
+        <div class="ii-card-title">¿Qué encontrás en el portal?</div>
+        <ul>
+          <li>Guías PDF descargables con tu plan</li>
+          <li>Clases en video para ver cuándo quieras</li>
+          <li>Recetarios y tablas de referencia</li>
+          <li>Material actualizado cada semana</li>
+        </ul>
+      </div>
+      <div class="ii-card">
+        <div class="ii-card-title">Sobre el contenido</div>
+        <ul>
+          <li>Los PDF podés descargarlos libremente</li>
+          <li>Los videos son solo para visualización</li>
+          <li>El material es exclusivo para inscritas</li>
+          <li>Acceso activo mientras dure tu programa</li>
+        </ul>
+      </div>
+      <div class="ii-card">
+        <div class="ii-card-title">¿Problemas de acceso?</div>
+        <ul>
+          <li>Escribinos por WhatsApp</li>
+          <li>Te respondemos en menos de 24hs</li>
+        </ul>
+        <a href="https://wa.me/5491126507059?text=Hola!%20Tengo%20problemas%20para%20acceder%20al%20portal%20de%20ÁUREA" target="_blank" style="display:inline-block;margin-top:12px;background:var(--rose);color:#fff;padding:9px 20px;border-radius:100px;font-size:12px;font-weight:600;text-decoration:none;letter-spacing:.5px">Pedir ayuda →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="s-contacto" id="contacto">
+  <div class="ey-label rv">Empezá hoy</div>
+  <h2 class="section-title rv">Comenzá tu <em>transformación</em></h2>
+  <div class="contacto-grid rv">
+    <div>
+      <form onsubmit="enviarWA(event)">
+        <label class="cf-label">Tu nombre</label>
+        <input type="text" id="cn" class="cf-input" placeholder="María González" required>
+        <label class="cf-label">Tu WhatsApp</label>
+        <input type="tel" id="ct" class="cf-input" placeholder="+54 9 11 ..." required>
+        <label class="cf-label">¿Qué te está pasando? (opcional)</label>
+        <textarea id="cm" class="cf-input" placeholder="Contanos sobre tus síntomas o consultas..."></textarea>
+        <button type="submit" class="cf-btn">Enviar consulta por WhatsApp →</button>
+      </form>
+    </div>
+    <div class="c-info">
+      <a href="https://wa.me/5491126507059?text=Hola!%20Me%20interesa%20el%20programa%20ÁUREA%20🌸" target="_blank" class="c-wa">
+        <div class="c-wa-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </div>
+        <div>
+          <div class="c-wa-l">WhatsApp directo</div>
+          <div class="c-wa-n">Consultanos ahora</div>
+        </div>
+      </a>
+      <div class="c-blq">
+        <div class="c-blq-t">¿Qué incluye el programa?</div>
+        <ul>
+          <li>Plan antiinflamatorio personalizado</li>
+          <li>Sesiones de coaching con Gabriela</li>
+          <li>Consultas nutricionales con Zulimar</li>
+          <li>Material de apoyo (PDF + Videos)</li>
+          <li>Acceso al portal de inscritas</li>
+        </ul>
+      </div>
+      <div class="c-blq">
+        <div class="c-blq-t">Respondemos en menos de 24hs</div>
+        <ul>
+          <li>Te contamos todo sobre el programa</li>
+          <li>Evaluamos si es para tu etapa actual</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p><strong>ÁUREA · Programa Antiinflamatorio</strong> &nbsp;·&nbsp; Nutrición para Menopausia y Perimenopausia &nbsp;·&nbsp; © 2026</p>
+</footer>
+
+<!-- WhatsApp flotante -->
+<a href="https://wa.me/5491126507059?text=Hola!%20Me%20interesa%20el%20programa%20ÁUREA%20🌸" target="_blank" class="waf" aria-label="WhatsApp">
+  <div class="waf-tip">¡Hablemos!</div>
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- MODAL INFORMACIÓN DEL PROGRAMA -->
+<div class="modal-ov" id="mdProg">
+  <div class="modal-bx">
+    <button class="modal-x" onclick="cerrarModal()">✕</button>
+    <div class="modal-h">ÁUREA — Programa Antiinflamatorio</div>
+    <div class="modal-sub">Nutrición & Coaching para Menopausia y Perimenopausia</div>
+
+    <div class="modal-sec">
+      <h3>¿Qué es ÁUREA?</h3>
+      <p>Un programa integral de nutrición antiinflamatoria y coaching de bienestar diseñado específicamente para mujeres en etapa de menopausia y perimenopausia. Combina ciencia nutricional con acompañamiento personalizado para transformar esta etapa en una oportunidad de brillar.</p>
+    </div>
+
+    <div class="modal-sec">
+      <h3>¿A quién va dirigido?</h3>
+      <p>Mujeres mayores de 38 años que atraviesan la perimenopausia o menopausia y desean reducir síntomas, controlar la inflamación, mejorar su bienestar general y establecer hábitos alimentarios que las acompañen toda la vida.</p>
+    </div>
+
+    <div class="modal-sec">
+      <h3>Objetivos del programa</h3>
+      <ul>
+        <li><strong>Reducir inflamación crónica</strong> y sus síntomas asociados</li>
+        <li><strong>Regular el equilibrio hormonal</strong> a través de la alimentación</li>
+        <li><strong>Mejorar el sueño, el ánimo y la energía</strong></li>
+        <li><strong>Controlar el peso hormonal</strong> de forma saludable y duradera</li>
+        <li><strong>Construir hábitos sostenibles</strong> para esta etapa y las siguientes</li>
+      </ul>
+    </div>
+
+    <div class="modal-sec">
+      <h3>Equipo profesional</h3>
+      <ul>
+        <li><strong>Zulimar Rivero</strong> — Licenciada en Nutrición · Especialista en salud femenina</li>
+        <li><strong>Gabriela Mejias</strong> — Health Coach Certificada · Bienestar integral</li>
+      </ul>
+    </div>
+
+    <div class="modal-sec">
+      <h3>Modalidad y duración</h3>
+      <div class="modal-2col">
+        <div class="modal-card"><strong>📍 Modalidad</strong><span>100% Online</span></div>
+        <div class="modal-card"><strong>📅 Sesiones</strong><span>Encuentros semanales vía Zoom</span></div>
+        <div class="modal-card"><strong>⏱ Duración</strong><span>4 semanas (renovable)</span></div>
+        <div class="modal-card"><strong>🔄 Acceso</strong><span>Portal exclusivo con PDF y videos</span></div>
+      </div>
+    </div>
+
+    <div class="modal-sec">
+      <h3>Inversión</h3>
+      <div class="modal-2col">
+        <div class="modal-card">
+          <strong>🇦🇷 Argentina</strong>
+          <span>Consultá precio actual por WhatsApp · MercadoPago disponible</span>
+        </div>
+        <div class="modal-card">
+          <strong>🌎 Internacional</strong>
+          <span>Consultá precio en USD · PayPal disponible</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-warn">
+      ⚠️ <strong>Importante:</strong> Este programa no reemplaza la consulta médica individual. No se prescriben medicamentos ni se realizan diagnósticos médicos.
+    </div>
+
+    <div class="modal-ctas">
+      <a href="https://wa.me/5491126507059?text=Hola!%20Quiero%20inscribirme%20al%20programa%20ÁUREA%20🌸" target="_blank" class="modal-btn modal-btn-p">Inscribirme →</a>
+      <a href="https://wa.me/5491126507059?text=Hola!%20Tengo%20una%20consulta%20sobre%20ÁUREA%20🌸" target="_blank" class="modal-btn modal-btn-s">Consultar primero</a>
+    </div>
+  </div>
+</div>
+
+<script>
+// === SCROLL REVEAL ===
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('on') });
+}, {threshold: .1});
+document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+
+// === MODAL ===
+function abrirModal(){
+  document.getElementById('mdProg').classList.add('on');
+  document.body.style.overflow='hidden';
+}
+function cerrarModal(){
+  document.getElementById('mdProg').classList.remove('on');
+  document.body.style.overflow='';
+}
+document.getElementById('mdProg').addEventListener('click', function(e){
+  if(e.target === this) cerrarModal();
+});
+
+// === ADMINS (fijos, no se pueden borrar) ===
+const ADMINS = {
+  'gabriela@aurea.com': { pass: 'admin2026', nombre: 'Gabriela' },
+  'zulimar@aurea.com':  { pass: 'admin2026', nombre: 'Zulimar'  }
+};
+
+// === INSCRITAS (dinámicas, guardadas en localStorage) ===
+function getInscritas(){
+  try {
+    const raw = localStorage.getItem('aurea_inscritas');
+    if(raw) return JSON.parse(raw);
+  } catch(e){}
+  // Una inscrita de demo por defecto
+  return [
+    { id:'i1', nombre:'Inscripta Demo', email:'inscrita@aurea.com', pass:'aurea2026', nota:'Acceso demo', activa:true, creada: new Date().toLocaleDateString('es-AR') }
+  ];
+}
+function saveInscritas(list){ localStorage.setItem('aurea_inscritas', JSON.stringify(list)); }
+
+// Resolver usuario al login (admin o inscrita)
+function resolveUser(email, pass){
+  // Revisar admins
+  const adm = ADMINS[email];
+  if(adm && adm.pass === pass) return { role:'admin', nombre:adm.nombre };
+  // Revisar inscritas
+  const inscritas = getInscritas();
+  const insc = inscritas.find(i => i.email === email && i.pass === pass && i.activa);
+  if(insc) return { role:'inscrita', nombre:insc.nombre };
+  return null;
+}
+
+// === MATERIALES (localStorage) ===
+function getMateriales(){
+  try {
+    const raw = localStorage.getItem('aurea_materiales');
+    if(raw) return JSON.parse(raw);
+  } catch(e){}
+  return {
+    pdfs: [
+      { id:'p1', nombre:'Guía Antiinflamatoria — Semana 1', meta:'PDF · Plan alimentario completo', data:'', url:'', icono:'📋' },
+      { id:'p2', nombre:'Recetario de Menopausia',           meta:'PDF · 30 recetas antiinflamatorias', data:'', url:'', icono:'🥗' },
+      { id:'p3', nombre:'Tabla de Alimentos Funcionales',    meta:'PDF · Referencia rápida',          data:'', url:'', icono:'📊' },
+      { id:'p4', nombre:'Protocolo de Sueño & Alimentación', meta:'PDF · Cómo mejorar el descanso',   data:'', url:'', icono:'🌙' }
+    ],
+    videos: [
+      { id:'v1', nombre:'Clase 1 — Introducción al método ÁUREA', meta:'Video · 45 min · Zulimar Rivero',    url:'' },
+      { id:'v2', nombre:'Clase 2 — Hormonas y alimentación',       meta:'Video · 52 min · Gabriela Mejias',  url:'' },
+      { id:'v3', nombre:'Clase 3 — Construyendo hábitos que duran',meta:'Video · 38 min · Gabriela Mejias',  url:'' },
+      { id:'v4', nombre:'Clase 4 — Plan práctico semanal',         meta:'Video · 41 min · Zulimar Rivero',   url:'' }
+    ]
+  };
+}
+function saveMateriales(data){
+  try { localStorage.setItem('aurea_materiales', JSON.stringify(data)); }
+  catch(e){ mostrarToast('⚠️ Almacenamiento lleno. Usá links externos para archivos grandes.'); }
+}
+
+// === FILE SELECTION STATE ===
+let pendingPdfData = '';   // base64 data URI del PDF seleccionado
+let pendingVideoBlob = ''; // object URL del video seleccionado
+
+function onPdfFileSelected(input){
+  const file = input.files[0];
+  const label = document.getElementById('newPdfFileLabel');
+  if(!file){ pendingPdfData = ''; label.textContent = 'Sin archivo seleccionado'; label.className='adm-file-label'; return; }
+  if(file.type !== 'application/pdf' && !file.name.endsWith('.pdf')){
+    mostrarToast('⚠️ Solo se permiten archivos PDF'); input.value=''; return;
+  }
+  label.textContent = `⏳ Cargando ${file.name}…`;
+  const reader = new FileReader();
+  reader.onload = function(e){
+    pendingPdfData = e.target.result; // data:application/pdf;base64,...
+    label.textContent = `✅ ${file.name} (${(file.size/1024).toFixed(0)} KB)`;
+    label.className = 'adm-file-label loaded';
+  };
+  reader.onerror = function(){ mostrarToast('❌ Error al leer el archivo'); pendingPdfData = ''; };
+  reader.readAsDataURL(file);
+}
+
+function onVideoFileSelected(input){
+  const file = input.files[0];
+  const label = document.getElementById('newVideoFileLabel');
+  if(!file){ pendingVideoBlob=''; label.textContent='Sin archivo seleccionado'; label.className='adm-file-label'; return; }
+  if(pendingVideoBlob) URL.revokeObjectURL(pendingVideoBlob);
+  pendingVideoBlob = URL.createObjectURL(file);
+  label.textContent = `✅ ${file.name} (${(file.size/1024/1024).toFixed(1)} MB)`;
+  label.className = 'adm-file-label loaded';
+}
+
+// === LOGIN ===
+function loginPortal(){
+  const email = document.getElementById('loginUser').value.trim().toLowerCase();
+  const pass  = document.getElementById('loginPass').value;
+  const u = resolveUser(email, pass);
+  if(u){
+    sessionStorage.setItem('aurea_auth', JSON.stringify({email, role:u.role, nombre:u.nombre}));
+    mostrarPortal(email, u.role, u.nombre);
+  } else {
+    const errEl = document.getElementById('loginError');
+    errEl.textContent = 'Usuario o contraseña incorrectos. Contactá a tu profesional.';
+    errEl.style.display = 'block';
+    setTimeout(()=>{ errEl.style.display='none'; }, 4000);
+  }
+}
+
+function mostrarPortal(email, role, nombre){
+  document.getElementById('loginBox').style.display = 'none';
+  if(role === 'admin'){
+    document.getElementById('adminArea').classList.add('visible');
+    document.getElementById('adminNombre').textContent = nombre;
+    renderAdminPanel();
+  } else {
+    document.getElementById('portalArea').classList.add('visible');
+    document.getElementById('portalNombre').textContent = nombre;
+    renderPortalMateriales();
+  }
+}
+
+function cerrarPortal(){
+  sessionStorage.removeItem('aurea_auth');
+  document.getElementById('loginBox').style.display = 'block';
+  document.getElementById('portalArea').classList.remove('visible');
+  document.getElementById('adminArea').classList.remove('visible');
+  document.getElementById('loginUser').value = '';
+  document.getElementById('loginPass').value = '';
+}
+
+window.addEventListener('load', () => {
+  const raw = sessionStorage.getItem('aurea_auth');
+  if(raw){ try { const s=JSON.parse(raw); mostrarPortal(s.email,s.role,s.nombre); } catch(e){ sessionStorage.removeItem('aurea_auth'); } }
+});
+
+document.addEventListener('keydown', function(e){
+  if(e.key==='Enter'){
+    const f=document.activeElement;
+    if(f.id==='loginUser'||f.id==='loginPass') loginPortal();
+  }
+});
+
+// === PORTAL INSCRITAS ===
+function resolveUrl(item){
+  // Prefiere data base64 > url externa
+  return item.data || item.url || '';
+}
+
+function renderPortalMateriales(){
+  const mat = getMateriales();
+  const pdfList = document.getElementById('portalPdfList');
+  pdfList.innerHTML = mat.pdfs.map(p => {
+    const src = resolveUrl(p);
+    const tieneArchivo = !!src;
+    return `<li class="mat-item" ${tieneArchivo ? `onclick="abrirPdf('${encodeURIComponent(src).substring(0,30)}…','${p.nombre.replace(/'/g,"&#39;")}',${mat.pdfs.indexOf(p)})"` : ''} style="${!tieneArchivo?'opacity:.5;cursor:default':''}">
+      <div class="mat-icon pdf">${p.icono||'📄'}</div>
+      <div class="mat-info">
+        <div class="mat-name">${p.nombre}</div>
+        <div class="mat-meta">${p.meta}</div>
+      </div>
+      <span class="mat-action">${tieneArchivo ? '⬇ Descargar' : '🔒 Próximamente'}</span>
+    </li>`;
+  }).join('');
+
+  const vidList = document.getElementById('portalVideoList');
+  vidList.innerHTML = mat.videos.map(v => {
+    const tieneVideo = !!v.url;
+    return `<li class="mat-item" ${tieneVideo ? `onclick="abrirVideo('${v.url.replace(/'/g,"&#39;")}','${v.nombre.replace(/'/g,"&#39;")}')"` : ''} style="${!tieneVideo?'opacity:.5;cursor:default':''}">
+      <div class="mat-icon video">▶</div>
+      <div class="mat-info">
+        <div class="mat-name">${v.nombre}</div>
+        <div class="mat-meta">${v.meta}</div>
+      </div>
+      <span class="mat-action">${tieneVideo ? '▶ Ver' : '🔒 Próximamente'}</span>
+    </li>`;
+  }).join('');
+}
+
+function abrirPdf(srcIgnored, nombre, idx){
+  const mat = getMateriales();
+  const p = mat.pdfs[idx];
+  const src = resolveUrl(p);
+  if(!src) return;
+  // Si es base64 → crear blob y abrir
+  if(src.startsWith('data:')){
+    const b64 = src.split(',')[1];
+    const bin = atob(b64);
+    const bytes = new Uint8Array(bin.length);
+    for(let i=0;i<bin.length;i++) bytes[i]=bin.charCodeAt(i);
+    const blob = new Blob([bytes],{type:'application/pdf'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href=url; a.download=nombre+'.pdf'; a.click();
+    setTimeout(()=>URL.revokeObjectURL(url),5000);
+  } else {
+    window.open(src,'_blank');
+  }
+}
+
+function abrirVideo(url, nombre){
+  let embedUrl = url;
+  const ytMatch = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([a-zA-Z0-9_-]{11})/);
+  if(ytMatch) embedUrl = `https://www.youtube.com/embed/${ytMatch[1]}?autoplay=1`;
+  const vimeoMatch = url.match(/vimeo\.com\/(\d+)/);
+  if(vimeoMatch) embedUrl = `https://player.vimeo.com/video/${vimeoMatch[1]}?autoplay=1`;
+  document.getElementById('videoTitle').textContent = nombre;
+  const frame = document.getElementById('videoFrame');
+  // Si es archivo local (blob:) o drive, usar src directo
+  frame.src = embedUrl;
+  document.getElementById('videoOverlay').style.display = 'flex';
+}
+function cerrarVideo(){
+  document.getElementById('videoOverlay').style.display = 'none';
+  document.getElementById('videoFrame').src = '';
+}
+
+// === ADMIN PANEL ===
+function renderAdminPanel(){
+  const mat = getMateriales();
+
+  const pdfAdmin = document.getElementById('adminPdfList');
+  pdfAdmin.innerHTML = mat.pdfs.map((p,i) => {
+    const tiene = !!(p.data||p.url);
+    return `<div class="adm-item">
+      <div class="adm-item-info">
+        <span class="adm-item-name">${p.icono||'📄'} ${p.nombre}</span>
+        <span class="adm-item-url">${p.data ? '✅ Archivo subido' : p.url ? '🔗 Link externo' : '⚠️ Sin contenido'}</span>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px;">
+        <label class="adm-file-btn" style="font-size:11px;padding:7px 12px;" for="editPdf_${i}">📁 Reemplazar archivo</label>
+        <input type="file" id="editPdf_${i}" accept=".pdf,application/pdf" style="display:none" onchange="reemplazarPdf(${i},this)">
+        <input type="text" class="adm-input" style="flex:1;min-width:180px;" placeholder="O pegá link externo…" value="${p.url||''}" onchange="updatePdfUrl(${i},this.value)">
+        <button onclick="deletePdf(${i})" style="background:rgba(255,60,60,.2);border:1px solid rgba(255,60,60,.3);color:#ff9999;border-radius:8px;padding:7px 12px;cursor:pointer;font-size:12px;white-space:nowrap;">🗑 Eliminar</button>
+      </div>
+    </div>`;
+  }).join('');
+
+  const vidAdmin = document.getElementById('adminVideoList');
+  vidAdmin.innerHTML = mat.videos.map((v,i) => `
+    <div class="adm-item">
+      <div class="adm-item-info">
+        <span class="adm-item-name">🎥 ${v.nombre}</span>
+        <span class="adm-item-url">${v.url ? '✅ Link cargado' : '⚠️ Sin link'}</span>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px;">
+        <input type="text" class="adm-input" style="flex:1;min-width:200px;" placeholder="YouTube, Vimeo, Drive…" value="${v.url||''}" onchange="updateVideoUrl(${i},this.value)">
+        <button onclick="deleteVideo(${i})" style="background:rgba(255,60,60,.2);border:1px solid rgba(255,60,60,.3);color:#ff9999;border-radius:8px;padding:7px 12px;cursor:pointer;font-size:12px;white-space:nowrap;">🗑 Eliminar</button>
+      </div>
+    </div>`).join('');
+
+  // === INSCRITAS ===
+  const inscritas = getInscritas();
+  const lista = document.getElementById('adminInscritasList');
+  if(!inscritas.length){
+    lista.innerHTML = '<p style="font-size:13px;color:rgba(255,255,255,.35);font-style:italic;padding:12px 0;">Todavía no hay inscritas cargadas.</p>';
+  } else {
+    lista.innerHTML = inscritas.map((insc,i) => `
+      <div class="adm-item" style="border-left:3px solid ${insc.activa ? 'var(--taupe)' : 'rgba(255,60,60,.4)'};">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+          <div>
+            <div style="font-size:14px;font-weight:600;color:#fff;margin-bottom:3px;">👤 ${insc.nombre}</div>
+            <div style="font-size:12px;color:var(--taupe);margin-bottom:2px;">📧 ${insc.email}</div>
+            <div style="font-size:12px;color:rgba(255,255,255,.4);">🔑 ${insc.pass} &nbsp;·&nbsp; 📅 ${insc.creada||'—'}${insc.nota ? ' &nbsp;·&nbsp; 📝 '+insc.nota : ''}</div>
+          </div>
+          <div style="display:flex;gap:8px;flex-shrink:0;align-items:center;">
+            <button onclick="toggleInscrita(${i})" style="background:${insc.activa ? 'rgba(255,180,0,.15)' : 'rgba(0,200,80,.15)'};border:1px solid ${insc.activa ? 'rgba(255,180,0,.35)' : 'rgba(0,200,80,.35)'};color:${insc.activa ? '#FFB400' : '#00C850'};border-radius:8px;padding:7px 12px;cursor:pointer;font-size:12px;white-space:nowrap;">${insc.activa ? '⏸ Suspender' : '▶ Activar'}</button>
+            <button onclick="deleteInscrita(${i})" style="background:rgba(255,60,60,.2);border:1px solid rgba(255,60,60,.3);color:#ff9999;border-radius:8px;padding:7px 12px;cursor:pointer;font-size:12px;white-space:nowrap;">🗑 Eliminar</button>
+          </div>
+        </div>
+        <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+          <input type="text" class="adm-input" style="flex:1;min-width:160px;" placeholder="Nueva contraseña" id="newpass_${i}">
+          <button onclick="cambiarPass(${i})" style="background:rgba(201,148,26,.2);border:1px solid rgba(201,148,26,.4);color:var(--taupe);border-radius:8px;padding:8px 14px;cursor:pointer;font-size:12px;white-space:nowrap;">🔑 Cambiar contraseña</button>
+        </div>
+      </div>`).join('');
+  }
+}
+
+// === INSCRITAS CRUD ===
+function generarPass(){
+  const chars = 'abcdefghjkmnpqrstuvwxyz23456789';
+  let p = '';
+  for(let i=0;i<8;i++) p += chars[Math.floor(Math.random()*chars.length)];
+  document.getElementById('newInscritaPass').value = p;
+}
+
+function addInscrita(){
+  const nombre = document.getElementById('newInscritaNombre').value.trim();
+  const email  = document.getElementById('newInscritaEmail').value.trim().toLowerCase();
+  const pass   = document.getElementById('newInscritaPass').value.trim();
+  const nota   = document.getElementById('newInscritaNota').value.trim();
+  if(!nombre){ mostrarToast('⚠️ Ingresá el nombre'); return; }
+  if(!email || !email.includes('@')){ mostrarToast('⚠️ Ingresá un email válido'); return; }
+  if(!pass){ mostrarToast('⚠️ Ingresá o generá una contraseña'); return; }
+  // Verificar que no exista ya
+  if(ADMINS[email]){ mostrarToast('⚠️ Ese email corresponde a un administrador'); return; }
+  const inscritas = getInscritas();
+  if(inscritas.find(i=>i.email===email)){ mostrarToast('⚠️ Ya existe una inscrita con ese email'); return; }
+  inscritas.push({ id:'i'+Date.now(), nombre, email, pass, nota, activa:true, creada: new Date().toLocaleDateString('es-AR') });
+  saveInscritas(inscritas);
+  document.getElementById('newInscritaNombre').value='';
+  document.getElementById('newInscritaEmail').value='';
+  document.getElementById('newInscritaPass').value='';
+  document.getElementById('newInscritaNota').value='';
+  renderAdminPanel();
+  mostrarToast(`✅ Acceso creado para ${nombre}`);
+}
+
+function deleteInscrita(idx){
+  const inscritas = getInscritas();
+  if(!confirm(`¿Eliminar definitivamente el acceso de ${inscritas[idx].nombre}?`)) return;
+  inscritas.splice(idx,1);
+  saveInscritas(inscritas);
+  renderAdminPanel();
+  mostrarToast('🗑 Inscrita eliminada');
+}
+
+function toggleInscrita(idx){
+  const inscritas = getInscritas();
+  inscritas[idx].activa = !inscritas[idx].activa;
+  saveInscritas(inscritas);
+  renderAdminPanel();
+  mostrarToast(inscritas[idx].activa ? `✅ ${inscritas[idx].nombre} activada` : `⏸ ${inscritas[idx].nombre} suspendida`);
+}
+
+function cambiarPass(idx){
+  const input = document.getElementById(`newpass_${idx}`);
+  const nueva = input ? input.value.trim() : '';
+  if(!nueva){ mostrarToast('⚠️ Ingresá la nueva contraseña'); return; }
+  const inscritas = getInscritas();
+  inscritas[idx].pass = nueva;
+  saveInscritas(inscritas);
+  renderAdminPanel();
+  mostrarToast(`🔑 Contraseña actualizada para ${inscritas[idx].nombre}`);
+}
+
+function reemplazarPdf(idx, input){
+  const file = input.files[0];
+  if(!file) return;
+  if(file.type !== 'application/pdf' && !file.name.endsWith('.pdf')){ mostrarToast('⚠️ Solo archivos PDF'); return; }
+  mostrarToast('⏳ Cargando PDF…');
+  const reader = new FileReader();
+  reader.onload = function(e){
+    const mat = getMateriales();
+    mat.pdfs[idx].data = e.target.result;
+    mat.pdfs[idx].url = '';
+    saveMateriales(mat);
+    renderAdminPanel();
+    mostrarToast(`✅ PDF actualizado: ${file.name}`);
+  };
+  reader.onerror = ()=>mostrarToast('❌ Error al leer el PDF');
+  reader.readAsDataURL(file);
+}
+
+function updatePdfUrl(idx, url){
+  const mat = getMateriales();
+  mat.pdfs[idx].url = url.trim();
+  if(url.trim()) mat.pdfs[idx].data = ''; // si pegan link, limpiar archivo local
+  saveMateriales(mat);
+  mostrarToast('💾 Link guardado');
+}
+function updateVideoUrl(idx, url){
+  const mat = getMateriales();
+  mat.videos[idx].url = url.trim();
+  saveMateriales(mat);
+  mostrarToast('💾 Link guardado');
+}
+
+function addPdf(){
+  const nombre = document.getElementById('newPdfNombre').value.trim();
+  const meta   = document.getElementById('newPdfMeta').value.trim();
+  const url    = document.getElementById('newPdfUrl').value.trim();
+  if(!nombre){ mostrarToast('⚠️ Ingresá el nombre del PDF'); return; }
+  if(!pendingPdfData && !url){ mostrarToast('⚠️ Seleccioná un archivo o pegá un link'); return; }
+
+  const mat = getMateriales();
+  mat.pdfs.push({ id:'p'+Date.now(), nombre, meta:meta||'PDF', data:pendingPdfData, url:pendingPdfData?'':url, icono:'📄' });
+  saveMateriales(mat);
+
+  // Reset
+  document.getElementById('newPdfNombre').value='';
+  document.getElementById('newPdfMeta').value='';
+  document.getElementById('newPdfUrl').value='';
+  document.getElementById('newPdfFile').value='';
+  document.getElementById('newPdfFileLabel').textContent='Sin archivo seleccionado';
+  document.getElementById('newPdfFileLabel').className='adm-file-label';
+  pendingPdfData='';
+  renderAdminPanel();
+  mostrarToast('✅ PDF agregado correctamente');
+}
+
+function addVideo(){
+  const nombre = document.getElementById('newVideoNombre').value.trim();
+  const meta   = document.getElementById('newVideoMeta').value.trim();
+  const url    = (document.getElementById('newVideoUrl').value||'').trim() || pendingVideoBlob;
+  if(!nombre){ mostrarToast('⚠️ Ingresá el nombre del video'); return; }
+  if(!url){ mostrarToast('⚠️ Seleccioná un archivo o pegá un link'); return; }
+
+  const mat = getMateriales();
+  mat.videos.push({ id:'v'+Date.now(), nombre, meta:meta||'Video', url });
+  saveMateriales(mat);
+
+  document.getElementById('newVideoNombre').value='';
+  document.getElementById('newVideoMeta').value='';
+  document.getElementById('newVideoUrl').value='';
+  document.getElementById('newVideoFile').value='';
+  document.getElementById('newVideoFileLabel').textContent='Sin archivo seleccionado';
+  document.getElementById('newVideoFileLabel').className='adm-file-label';
+  pendingVideoBlob='';
+  renderAdminPanel();
+  mostrarToast('✅ Video agregado correctamente');
+}
+
+function deletePdf(idx){
+  if(!confirm('¿Eliminar este PDF?')) return;
+  const mat=getMateriales(); mat.pdfs.splice(idx,1); saveMateriales(mat); renderAdminPanel();
+}
+function deleteVideo(idx){
+  if(!confirm('¿Eliminar este video?')) return;
+  const mat=getMateriales(); mat.videos.splice(idx,1); saveMateriales(mat); renderAdminPanel();
+}
+
+function mostrarToast(msg){
+  const t=document.createElement('div'); t.className='toast-msg'; t.textContent=msg;
+  document.body.appendChild(t);
+  setTimeout(()=>t.classList.add('show'),10);
+  setTimeout(()=>{ t.classList.remove('show'); setTimeout(()=>t.remove(),400); },3000);
+}
+
+// === WHATSAPP FORM ===
+function enviarWA(e){
+  e.preventDefault();
+  const n=document.getElementById('cn').value;
+  const t=document.getElementById('ct').value;
+  const m=document.getElementById('cm').value;
+  const txt=`Hola! Soy ${n} (${t}). Me interesa el programa ÁUREA 🌸${m?'\n\n'+m:''}`;
+  window.open(`https://wa.me/5491126507059?text=${encodeURIComponent(txt)}`,'_blank');
+}
+</script>
+<!-- VIDEO OVERLAY -->
+<div class="video-overlay" id="videoOverlay">
+  <div class="video-header">
+    <span id="videoTitle"></span>
+    <button class="video-close" onclick="cerrarVideo()">✕</button>
+  </div>
+  <iframe class="video-iframe" id="videoFrame" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+</div>
+
+</body>
+</html>
