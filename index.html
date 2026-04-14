@@ -705,6 +705,12 @@ footer strong{color:rgba(255,255,255,.65)}
   z-index:998;
   display:flex;flex-direction:row;gap:10px;align-items:center;
   flex-wrap:wrap;justify-content:center;
+  transition:opacity .3s ease, transform .3s ease;
+}
+.float-stack.hidden{
+  opacity:0;
+  pointer-events:none;
+  transform:translateX(-50%) translateY(-12px);
 }
 .float-inicio{
   background:var(--rose);color:#fff;
@@ -893,7 +899,6 @@ footer strong{color:rgba(255,255,255,.65)}
 .adm-tab.active{background:rgba(201,148,26,.25);border-color:rgba(201,148,26,.6);color:var(--taupe);}
 .adm-ed-label{display:block;font-size:11px;letter-spacing:1px;color:rgba(255,255,255,.45);text-transform:uppercase;margin-bottom:5px;}
 .adm-tab-content{min-height:100px;}
-</style>
 .toast-msg{
   position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(20px);
   background:#2A1F0A;color:#fff;padding:12px 24px;
@@ -2558,6 +2563,23 @@ document.getElementById('mdProg').addEventListener('click', function(e){
   async function _init() {
     _bindEvents();
     _aplicarContenidoGuardado();
+
+    // Ocultar botones flotantes al hacer scroll hacia abajo
+    (function() {
+      const floatStack = document.getElementById('floatStack');
+      if (!floatStack) return;
+      const THRESHOLD = 120; // px de scroll antes de ocultar
+      let lastY = window.scrollY;
+      window.addEventListener('scroll', function() {
+        const currentY = window.scrollY;
+        if (currentY > THRESHOLD) {
+          floatStack.classList.add('hidden');
+        } else {
+          floatStack.classList.remove('hidden');
+        }
+        lastY = currentY;
+      }, { passive: true });
+    })();
 
     // Restaurar sesión si existía
     const raw = sessionStorage.getItem('aurea_auth');
