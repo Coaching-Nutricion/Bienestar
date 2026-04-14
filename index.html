@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="BALANCE PRO — Programa de Nutrición Antiinflamatoria para Menopausia y Perimenopausia. Recuperá tu bienestar con acompañamiento profesional.">
-<title>BALANCE PRO · Programa Antiinflamatorio</title>
+<meta name="description" content="BALANCE PRO — Programa de Acompañamiento Grupal para el descenso de peso, regular el cortisol e incorporar hábitos saludables. Guiado por Zuly y Gaby.">
+<title>BALANCE PRO · Descenso de Peso & Hábitos Saludables</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -699,6 +699,37 @@ footer strong{color:rgba(255,255,255,.65)}
 }
 .waf:hover .waf-tip{opacity:1}
 
+/* ===== BOTONES FLOTANTES FIJOS ===== */
+.float-stack{
+  position:fixed;top:72px;left:50%;transform:translateX(-50%);
+  z-index:998;
+  display:flex;flex-direction:row;gap:10px;align-items:center;
+  flex-wrap:wrap;justify-content:center;
+}
+.float-inicio{
+  background:var(--rose);color:#fff;
+  border-radius:100px;padding:9px 22px;
+  font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  box-shadow:0 4px 18px rgba(201,148,26,.4);
+  font-family:'DM Sans',sans-serif;
+  white-space:nowrap;
+}
+.float-info-btn{
+  background:var(--deep-sage);color:#fff;border:none;
+  border-radius:100px;padding:10px 22px;
+  font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  cursor:pointer;font-family:'DM Sans',sans-serif;
+  box-shadow:0 4px 18px rgba(42,31,10,.35);
+  transition:all .25s;white-space:nowrap;
+  display:flex;align-items:center;gap:8px;
+}
+.float-info-btn:hover{background:var(--gold-dark);transform:translateY(-2px);box-shadow:0 8px 28px rgba(42,31,10,.45);}
+@media(max-width:600px){
+  .float-stack{top:68px;gap:7px;}
+  .float-inicio{font-size:10px;padding:8px 16px;letter-spacing:1px;}
+  .float-info-btn{font-size:10px;padding:8px 16px;}
+}
+
 /* ===== MODAL ===== */
 .modal-ov{
   display:none;position:fixed;inset:0;
@@ -735,6 +766,8 @@ footer strong{color:rgba(255,255,255,.65)}
 .modal-card{background:var(--warm);border-radius:12px;padding:14px}
 .modal-card strong{display:block;font-size:12px;font-weight:600;color:var(--text);margin-bottom:4px}
 .modal-card span{font-size:12px;color:var(--text-soft)}
+.eq-item:empty { display:none; }
+.eq-item { list-style:disc; }
 .modal-warn{
   background:rgba(196,121,106,.08);border:1px solid var(--taupe);
   border-radius:10px;padding:12px 16px;
@@ -877,7 +910,7 @@ footer strong{color:rgba(255,255,255,.65)}
 <nav>
   <a href="#" class="nlogo">BALANCE <span>PRO</span></a>
   <div class="nlinks">
-    <a href="#programa" onclick="abrirModal();return false">El Programa</a>
+    <a href="#" id="navBtnPrograma">Programa</a>
     <a href="#profesionales">Profesionales</a>
     <a href="#inscritos">Área de Inscritas</a>
     <a href="https://wa.me/5491126507059?text=Hola!%20Me%20interesa%20el%20programa%20BALANCE%20PRO%20🌸" target="_blank" class="btn-nav">Consultar</a>
@@ -888,20 +921,20 @@ footer strong{color:rgba(255,255,255,.65)}
 <section class="hero-new" id="inicio">
   <!-- === IMAGEN PRINCIPAL: MUJER === -->
   <div class="hn-top">
-    <img src="BalancePro1.jpg" alt="Mujer con alimentación antiinflamatoria BALANCE PRO" class="hn-img-top">
+    <img src="BalancePro1.jpg" alt="Mujer en programa Balance Pro de descenso de peso" class="hn-img-top">
     <div class="hn-overlay"></div>
     <!-- Contenido sobre la imagen -->
     <div class="hn-content">
-      <div class="htag"><span>✦</span> <span id="ed-hero-tag">Programa Antiinflamatorio</span></div>
+      <div class="htag"><span>✦</span> <span id="ed-hero-tag">Programa de Acompañamiento Grupal</span></div>
       <h1 class="htitle" style="font-size:clamp(42px,6.5vw,80px);letter-spacing:-1px;line-height:1;">BALANCE<br><em style="font-style:italic;color:#F0D98A;font-size:1.05em;letter-spacing:2px;text-shadow:0 0 40px rgba(240,217,138,.35);">PRO</em></h1>
-      <p class="hsubtitle" id="ed-hero-sub">Nutrición antiinflamatoria para la menopausia y perimenopausia — porque este cambio merece una guía experta.</p>
+      <p class="hsubtitle" id="ed-hero-sub">Descenso de peso, regulación del cortisol y hábitos saludables — acompañado por Zuly y Gaby, Nutricionista y Health Coach.</p>
       <ul class="h-features">
-        <li id="ed-hero-f1">Inflamación, cambios hormonales y síntomas que nadie te explicó bien</li>
+        <li id="ed-hero-f1">Reducí inflamación y bajá de peso de forma saludable y sostenible</li>
         <li id="ed-hero-f2">Alimentación que cuida tu cuerpo en esta etapa única</li>
         <li id="ed-hero-f3">Acompañamiento profesional personalizado 100% online</li>
       </ul>
       <div class="hctas">
-        <a href="#" onclick="abrirModal();return false" class="btn-primary">
+        <a href="#" id="heroBtnPrograma" class="btn-primary">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
           Ver el programa
         </a>
@@ -917,7 +950,7 @@ footer strong{color:rgba(255,255,255,.65)}
         <div class="hn-stat-icon">🌿</div>
         <div>
           <div class="hn-stat-label">Enfoque</div>
-          <div class="hn-stat-val">Antiinflamatorio</div>
+          <div class="hn-stat-val">Integral</div>
         </div>
       </div>
       <div class="hn-stat-div"></div>
@@ -941,13 +974,13 @@ footer strong{color:rgba(255,255,255,.65)}
 
   <!-- === IMAGEN SECUNDARIA: FOOD === -->
   <div class="hn-bottom">
-    <img src="BalancePro.jpg" alt="Plato antiinflamatorio BALANCE PRO — Sabor, Equilibrio y Bienestar" class="hn-img-bottom">
+    <img src="BalancePro.jpg" alt="Alimentación saludable BALANCE PRO — Sabor, Equilibrio y Bienestar" class="hn-img-bottom">
     <div class="hn-bottom-overlay"></div>
     <div class="hn-bottom-label">
       <span class="hn-bl-title">Sabor · Equilibrio · Bienestar</span>
-      <span class="hn-bl-sub">para tu Salud Hormonal</span>
+      <span class="hn-bl-sub">para tu Bienestar Integral</span>
     </div>
-    <a href="#programa" onclick="abrirModal();return false" class="hn-cta-strip">
+    <a href="#" id="stripBtnPrograma" class="hn-cta-strip">
       Conocé el programa completo →
     </a>
   </div>
@@ -955,94 +988,83 @@ footer strong{color:rgba(255,255,255,.65)}
 
 <!-- PROBLEMA -->
 <section class="s-problema" id="problema">
-  <div class="ey-label rv">La realidad de esta etapa</div>
-  <h2 class="section-title rv">No es tu <em>imaginación.</em><br>Es inflamación.</h2>
-  <p class="section-sub rv">La menopausia y perimenopausia generan cambios hormonales que favorecen la inflamación crónica. Una alimentación antiinflamatoria puede ser la clave que transformó tu bienestar.</p>
+  <div class="ey-label rv">Por qué Balance Pro</div>
+  <h2 class="section-title rv">Un cambio real,<br><em>sostenible.</em></h2>
+  <p class="section-sub rv">Balance Pro es un espacio de acompañamiento grupal orientado al descenso de peso, la regulación del cortisol y la incorporación de hábitos saludables, guiado por profesionales que te acompañan en cada paso.</p>
   <div class="prob-grid rv">
     <div>
-      <p class="prob-quote">"La dieta antiinflamatoria puede mejorar significativamente los síntomas de la menopausia regulando el equilibrio hormonal y reduciendo la inflamación sistémica."</p>
-      <p class="prob-info">Según información especializada, este tipo de alimentación actúa directamente sobre los mecanismos que generan sofocos, cambios de ánimo, dificultad para dormir y el aumento de peso típico de esta etapa.</p>
+      <p class="prob-quote">"Cuando el cortisol se mantiene elevado, favorece la acumulación de grasa —especialmente abdominal— y dificulta el descenso de peso."</p>
+      <p class="prob-info">La gestión del estrés es un pilar clave para lograr resultados sostenibles. En Balance Pro integramos nutrición, coaching de hábitos y herramientas concretas para que aprendas a gestionarlo.</p>
     </div>
     <ul class="check-list">
-      <li>Reducís sofocos y síntomas vasomotores</li>
-      <li>Mejorás la calidad del sueño naturalmente</li>
-      <li>Controlás el aumento de peso hormonal</li>
-      <li>Protegés huesos y corazón con cada comida</li>
-      <li>Mejorás el estado de ánimo y la energía</li>
-      <li>Cuidás tu microbiota intestinal</li>
+      <li>Reducís inflamación corporal y abdominal</li>
+      <li>Bajás de peso de forma saludable sin perder masa muscular</li>
+      <li>Mejorás la digestión y aumentás tu energía</li>
+      <li>Regulás el cortisol con herramientas prácticas</li>
+      <li>Incorporás hábitos saludables a largo plazo</li>
+      <li>Mejorás tu bienestar general de forma integral</li>
     </ul>
   </div>
 </section>
 
-<!-- INFO ANTIINFLAMATORIA -->
+<!-- OBJETIVOS DEL PROGRAMA -->
 <section class="s-info" id="programa">
-  <div class="ey-label rv">El método</div>
-  <h2 class="section-title rv">Qué <em>incluye</em><br>la alimentación antiinflamatoria</h2>
-  <p class="section-sub rv">Alimentos que trabajan con tus hormonas, no en su contra. Basado en evidencia científica adaptada a tu etapa de vida.</p>
+  <div class="ey-label rv">Los objetivos</div>
+  <h2 class="section-title rv">Lo que vas a <em>lograr</em><br>con Balance Pro</h2>
+  <p class="section-sub rv">Un programa integral que combina nutrición, coaching de hábitos y gestión del estrés para resultados reales y sostenibles.</p>
   <div class="info-grid rv">
     <div class="info-card">
-      <span class="ic-icon">🫐</span>
-      <div class="ic-title">Antioxidantes Clave</div>
-      <p class="ic-desc">Frutas y vegetales ricos en flavonoides que combaten el estrés oxidativo y regulan la respuesta hormonal.</p>
+      <span class="ic-icon">🔥</span>
+      <div class="ic-title">Reducir Inflamación</div>
+      <p class="ic-desc">Disminuir la inflamación corporal y abdominal, mejorando la salud general y facilitando la pérdida de peso efectiva sin comprometer la masa muscular.</p>
       <div class="ic-foods">
-        <span class="ic-food">Arándanos</span>
-        <span class="ic-food">Espinaca</span>
-        <span class="ic-food">Cúrcuma</span>
-        <span class="ic-food">Jengibre</span>
+        <span class="ic-food">Antiinflamatorio</span>
+        <span class="ic-food">Sin perder músculo</span>
       </div>
     </div>
     <div class="info-card">
-      <span class="ic-icon">🐟</span>
-      <div class="ic-title">Omega-3 Esenciales</div>
-      <p class="ic-desc">Ácidos grasos que reducen la inflamación, protegen el corazón y mejoran la función cerebral durante la transición hormonal.</p>
+      <span class="ic-icon">⚖️</span>
+      <div class="ic-title">Bajar de Peso</div>
+      <p class="ic-desc">Perder peso de manera saludable y sostenible, manteniendo la masa muscular para un metabolismo eficiente y bienestar físico permanente.</p>
       <div class="ic-foods">
-        <span class="ic-food">Salmón</span>
-        <span class="ic-food">Chía</span>
-        <span class="ic-food">Nueces</span>
-        <span class="ic-food">Lino</span>
+        <span class="ic-food">Sostenible</span>
+        <span class="ic-food">Sin rebote</span>
       </div>
     </div>
     <div class="info-card">
-      <span class="ic-icon">🌾</span>
-      <div class="ic-title">Fibra & Probióticos</div>
-      <p class="ic-desc">El eje intestino-hormonas es fundamental. Una microbiota equilibrada mejora el metabolismo de estrógenos y reduce síntomas.</p>
+      <span class="ic-icon">🫶</span>
+      <div class="ic-title">Mejorar Digestión</div>
+      <p class="ic-desc">Optimizar la digestión, aumentar los niveles de energía y lograr una sensación de saciedad duradera para un estilo de vida más equilibrado.</p>
       <div class="ic-foods">
-        <span class="ic-food">Kéfir</span>
-        <span class="ic-food">Avena</span>
-        <span class="ic-food">Legumbres</span>
-        <span class="ic-food">Fermentados</span>
+        <span class="ic-food">Más energía</span>
+        <span class="ic-food">Saciedad real</span>
       </div>
     </div>
     <div class="info-card">
-      <span class="ic-icon">🥦</span>
-      <div class="ic-title">Fitoestrógenos</div>
-      <p class="ic-desc">Compuestos vegetales que actúan como estrógenos débiles, ayudando a suavizar la transición hormonal de forma natural.</p>
+      <span class="ic-icon">🧠</span>
+      <div class="ic-title">Regular el Cortisol</div>
+      <p class="ic-desc">Los cambios en el estilo de vida elevan el cortisol, favoreciendo la acumulación de grasa abdominal. Te damos herramientas concretas para gestionarlo.</p>
       <div class="ic-foods">
-        <span class="ic-food">Soja</span>
-        <span class="ic-food">Lino</span>
-        <span class="ic-food">Tofu</span>
-        <span class="ic-food">Legumbres</span>
+        <span class="ic-food">Gestión del estrés</span>
+        <span class="ic-food">Menos grasa abdominal</span>
       </div>
     </div>
     <div class="info-card">
-      <span class="ic-icon">🦴</span>
-      <div class="ic-title">Calcio & Vitamina D</div>
-      <p class="ic-desc">En la menopausia la protección ósea es prioridad. Fortalecemos el esqueleto con alimentos específicos y luz solar.</p>
+      <span class="ic-icon">✅</span>
+      <div class="ic-title">Hábitos Saludables</div>
+      <p class="ic-desc">Incorporar hábitos que permitan mejorar el bienestar general, regular el cortisol y facilitar un descenso de peso sostenido a largo plazo.</p>
       <div class="ic-foods">
-        <span class="ic-food">Lácteos</span>
-        <span class="ic-food">Almendras</span>
-        <span class="ic-food">Brócoli</span>
-        <span class="ic-food">Sardinitas</span>
+        <span class="ic-food">A largo plazo</span>
+        <span class="ic-food">Bienestar integral</span>
       </div>
     </div>
     <div class="info-card">
-      <span class="ic-icon">🚫</span>
-      <div class="ic-title">Lo que evitamos</div>
-      <p class="ic-desc">Reducir los alimentos proinflamatorios es igual de importante. Te enseñamos a identificarlos y reemplazarlos sin sacrificar el placer.</p>
+      <span class="ic-icon">👥</span>
+      <div class="ic-title">Acompañamiento Grupal</div>
+      <p class="ic-desc">2 encuentros semanales en vivo con Zuly y Gaby vía Zoom o Meet. Miércoles 20 hs y Sábados 12 hs. Contención, comunidad y resultados.</p>
       <div class="ic-foods">
-        <span class="ic-food">Ultra-procesados</span>
-        <span class="ic-food">Azúcar refinada</span>
-        <span class="ic-food">Grasas trans</span>
+        <span class="ic-food">Miércoles 20 hs</span>
+        <span class="ic-food">Sábados 12 hs</span>
       </div>
     </div>
   </div>
@@ -1052,7 +1074,7 @@ footer strong{color:rgba(255,255,255,.65)}
 <section class="s-team" id="profesionales">
   <div class="ey-label rv">Quiénes te acompañan</div>
   <h2 class="section-title rv">Tus <em>profesionales</em><br>de confianza</h2>
-  <p class="section-sub rv">Un equipo especializado creado específicamente para acompañarte en esta etapa tan importante de tu vida.</p>
+  <p class="section-sub rv">Zuly y Gaby te brindan las herramientas prácticas y te acompañan en el proceso hacia un estilo de vida saludable.</p>
   <div class="team-grid rv">
     <div class="team-card">
       <div class="team-header">
@@ -1063,11 +1085,11 @@ footer strong{color:rgba(255,255,255,.65)}
         <div class="team-role" id="ed-p1-rol">Licenciada en Nutrición</div>
       </div>
       <div class="team-body">
-        <p class="team-bio" id="ed-p1-bio">Nutricionista especializada en salud femenina y alimentación funcional. Su enfoque integra la ciencia de la nutrición con las necesidades reales de la mujer en la menopausia y perimenopausia, diseñando planes personalizados y sostenibles.</p>
+        <p class="team-bio" id="ed-p1-bio">Nutricionista especializada en alimentación funcional y descenso de peso sostenible. Su enfoque integra la ciencia de la nutrición con herramientas prácticas para mejorar la composición corporal, la digestión y la energía diaria.</p>
         <ul class="team-specialties">
-          <li id="ed-p1-e1">Nutrición antiinflamatoria para la mujer</li>
-          <li id="ed-p1-e2">Regulación hormonal a través de la alimentación</li>
-          <li id="ed-p1-e3">Manejo del peso en etapas hormonales</li>
+          <li id="ed-p1-e1">Nutrición para el descenso de peso sostenible</li>
+          <li id="ed-p1-e2">Reducción de inflamación y mejora digestiva</li>
+          <li id="ed-p1-e3">Regulación del cortisol mediante alimentación</li>
           <li id="ed-p1-e4">Planes alimentarios personalizados</li>
         </ul>
       </div>
@@ -1081,12 +1103,12 @@ footer strong{color:rgba(255,255,255,.65)}
         <div class="team-role" id="ed-p2-rol">Health Coach Certificada</div>
       </div>
       <div class="team-body">
-        <p class="team-bio" id="ed-p2-bio">Health coach con formación en salud integral y bienestar femenino. Gabriela trabaja los aspectos emocionales y de estilo de vida que acompañan los cambios hormonales, brindando herramientas concretas para sostener el proceso.</p>
+        <p class="team-bio" id="ed-p2-bio">Health Coach con formación en salud integral y bienestar. Gabriela trabaja los aspectos emocionales y de estilo de vida, brindando herramientas concretas para incorporar hábitos saludables y sostener el proceso de cambio.</p>
         <ul class="team-specialties">
-          <li id="ed-p2-e1">Coaching para el bienestar hormonal</li>
+          <li id="ed-p2-e1">Coaching para la incorporación de hábitos saludables</li>
           <li id="ed-p2-e2">Gestión del estrés y calidad de sueño</li>
           <li id="ed-p2-e3">Construcción de hábitos saludables duraderos</li>
-          <li id="ed-p2-e4">Acompañamiento emocional en la transición</li>
+          <li id="ed-p2-e4">Acompañamiento emocional en el proceso de cambio</li>
         </ul>
       </div>
     </div>
@@ -1101,22 +1123,22 @@ footer strong{color:rgba(255,255,255,.65)}
     <div class="paso-item">
       <div class="paso-num">01</div>
       <div class="paso-title">Evaluación inicial</div>
-      <p class="paso-desc">Completás tu perfil de salud y síntomas actuales para que podamos personalizar tu plan.</p>
+      <p class="paso-desc">Completás tu perfil de salud y objetivos actuales para que podamos acompañarte de manera personalizada.</p>
     </div>
     <div class="paso-item">
       <div class="paso-num">02</div>
       <div class="paso-title">Plan personalizado</div>
-      <p class="paso-desc">Zulimar diseña tu plan antiinflamatorio adaptado a tu etapa, preferencias y objetivos.</p>
+      <p class="paso-desc">Zuly diseña tu plan nutricional adaptado a tus objetivos, preferencias y estilo de vida.</p>
     </div>
     <div class="paso-item">
       <div class="paso-num">03</div>
       <div class="paso-title">Acompañamiento</div>
-      <p class="paso-desc">Gabriela te acompaña semanalmente en el proceso de incorporar los cambios de forma sostenible.</p>
+      <p class="paso-desc">Gaby te acompaña en cada encuentro a incorporar hábitos y gestionar el estrés de forma sostenible.</p>
     </div>
     <div class="paso-item">
       <div class="paso-num">04</div>
       <div class="paso-title">Bienestar sostenible</div>
-      <p class="paso-desc">Con herramientas concretas y acceso al material, construís tu nueva forma de vivir esta etapa.</p>
+      <p class="paso-desc">Con herramientas concretas y acceso al material, construís tu nuevo estilo de vida saludable.</p>
     </div>
   </div>
 </section>
@@ -1138,7 +1160,7 @@ footer strong{color:rgba(255,255,255,.65)}
         <input type="password" id="loginPass" class="lb-input" placeholder="••••••••">
         <div id="loginError" style="display:none;background:rgba(196,121,106,.2);border:1px solid var(--rose);border-radius:8px;padding:10px 14px;font-size:12px;color:#ffb3a7;margin-bottom:14px;"></div>
         <button class="lb-btn" onclick="loginPortal()">Ingresar al Portal →</button>
-        <p style="font-size:12px;color:rgba(255,255,255,.4);margin-top:14px;text-align:center">¿No tenés acceso? <a href="#contacto" style="color:var(--taupe);font-weight:600;text-decoration:none">Contactanos</a></p>
+        <p style="font-size:12px;color:rgba(255,255,255,.4);margin-top:14px;text-align:center">¿No tenés acceso? <a href="https://wa.me/5491126507059?text=Hola!%20Tengo%20una%20consulta%20sobre%20BALANCE%20PRO%20🌸" target="_blank" style="color:var(--taupe);font-weight:600;text-decoration:none">Contactanos</a></p>
       </div>
 
       <!-- PORTAL INSCRITAS (visible after login as inscrita) -->
@@ -1157,7 +1179,7 @@ footer strong{color:rgba(255,255,255,.65)}
           <ul class="material-list" id="portalVideoList"></ul>
         </div>
 
-        <button onclick="cerrarPortal()" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.5);border-radius:100px;padding:8px 20px;cursor:pointer;font-size:12px;margin-top:8px;font-family:'DM Sans',sans-serif;">Cerrar sesión</button>
+        <button id="btnCerrarInscrita" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.5);border-radius:100px;padding:8px 20px;cursor:pointer;font-size:12px;margin-top:8px;font-family:'DM Sans',sans-serif;">Cerrar sesión</button>
       </div>
 
       <!-- PANEL ADMINISTRADOR -->
@@ -1303,16 +1325,77 @@ footer strong{color:rgba(255,255,255,.65)}
               <button class="lb-btn" onclick="guardarProf(2)">💾 Guardar Profesional 2 →</button>
             </div>
 
+            <div class="adm-add-box" style="margin-bottom:16px;">
+              <div class="adm-add-title">📌 Botones flotantes (inicio y CTA)</div>
+              <label class="adm-ed-label">Texto badge INICIO (ej: INICIO 22 DE ABRIL)</label>
+              <input type="text" id="ed-float-inicio-in" class="adm-input" style="margin-bottom:10px;">
+              <label class="adm-ed-label" style="margin-top:4px;">Texto botón INFORMACIÓN</label>
+              <input type="text" id="ed-float-btn-in" class="adm-input" style="margin-bottom:12px;">
+              <button class="lb-btn" onclick="guardarFlotantes()">💾 Guardar botones flotantes →</button>
+            </div>
+
             <div class="adm-add-box">
-              <div class="adm-add-title">📋 Descripción del programa (ventana emergente)</div>
-              <textarea id="ed-modal-desc-in" class="adm-input" rows="4" style="resize:vertical;margin-bottom:12px;"></textarea>
-              <button class="lb-btn" onclick="guardarModalDesc()">💾 Guardar Descripción →</button>
+              <div class="adm-add-title">📋 Ventana emergente — Información del programa</div>
+
+              <label class="adm-ed-label">Subtítulo del encabezado</label>
+              <input type="text" id="ed-modal-sub-in" class="adm-input" style="margin-bottom:10px;">
+
+              <label class="adm-ed-label" style="margin-top:4px;">Descripción (¿Qué es?)</label>
+              <textarea id="ed-modal-desc-in" class="adm-input" rows="3" style="resize:vertical;margin-bottom:10px;"></textarea>
+
+              <label class="adm-ed-label" style="margin-top:4px;">¿A quién va dirigido?</label>
+              <textarea id="ed-modal-dirigido-in" class="adm-input" rows="2" style="resize:vertical;margin-bottom:10px;"></textarea>
+
+              <label class="adm-ed-label" style="margin-top:4px;">Objetivo 1</label>
+              <input type="text" id="ed-modal-obj1-in" class="adm-input" style="margin-bottom:6px;">
+              <label class="adm-ed-label">Objetivo 2</label>
+              <input type="text" id="ed-modal-obj2-in" class="adm-input" style="margin-bottom:6px;">
+              <label class="adm-ed-label">Objetivo 3</label>
+              <input type="text" id="ed-modal-obj3-in" class="adm-input" style="margin-bottom:10px;">
+
+              <label class="adm-ed-label" style="margin-top:4px;">Equipo — Profesional 1</label>
+              <input type="text" id="ed-modal-eq1-in" class="adm-input" style="margin-bottom:6px;">
+              <label class="adm-ed-label">Equipo — Profesional 2</label>
+              <input type="text" id="ed-modal-eq2-in" class="adm-input" style="margin-bottom:6px;">
+              <label class="adm-ed-label">Equipo — Profesional 3</label>
+              <input type="text" id="ed-modal-eq3-in" class="adm-input" style="margin-bottom:6px;">
+              <label class="adm-ed-label">Equipo — Profesional 4</label>
+              <input type="text" id="ed-modal-eq4-in" class="adm-input" style="margin-bottom:10px;">
+
+              <label class="adm-ed-label" style="margin-top:4px;">Modalidad</label>
+              <input type="text" id="ed-modal-mod-in" class="adm-input" style="margin-bottom:6px;">
+              <label class="adm-ed-label">Horario de encuentros</label>
+              <input type="text" id="ed-modal-enc-in" class="adm-input" style="margin-bottom:6px;">
+              <label class="adm-ed-label">Duración</label>
+              <input type="text" id="ed-modal-dur-in" class="adm-input" style="margin-bottom:6px;">
+              <label class="adm-ed-label">Renovación</label>
+              <input type="text" id="ed-modal-ren-in" class="adm-input" style="margin-bottom:10px;">
+
+              <label class="adm-ed-label" style="margin-top:4px;">Precio Argentina</label>
+              <input type="text" id="ed-modal-precio-ar-in" class="adm-input" style="margin-bottom:6px;">
+              <label class="adm-ed-label">Alias / CBU</label>
+              <input type="text" id="ed-modal-alias-in" class="adm-input" style="margin-bottom:6px;">
+              <label class="adm-ed-label">Precio Exterior</label>
+              <input type="text" id="ed-modal-precio-ext-in" class="adm-input" style="margin-bottom:6px;">
+              <label class="adm-ed-label">Email de pago</label>
+              <input type="text" id="ed-modal-email-pago-in" class="adm-input" style="margin-bottom:10px;">
+
+              <label class="adm-ed-label" style="margin-top:4px;">Requisito 1</label>
+              <input type="text" id="ed-modal-req1-in" class="adm-input" style="margin-bottom:10px;">
+              <label class="adm-ed-label" style="margin-top:4px;">🔗 Link del formulario de inscripción (Google Forms)</label>
+              <input type="text" id="ed-forms-link-in" class="adm-input" placeholder="https://forms.gle/..." style="margin-bottom:4px;">
+              <p style="font-size:11px;color:rgba(255,255,255,.35);margin-bottom:10px;">Este link abre al hacer clic en "formulario de inscripción" en la ventana del programa.</p>
+
+              <label class="adm-ed-label" style="margin-top:4px;">Aviso importante</label>
+              <textarea id="ed-modal-aviso-in" class="adm-input" rows="2" style="resize:vertical;margin-bottom:12px;"></textarea>
+
+              <button class="lb-btn" onclick="guardarInfoPrograma()">💾 Guardar toda la información →</button>
             </div>
 
           </div>
         </div><!-- /tab-editor -->
 
-        <button onclick="cerrarPortal()" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.5);border-radius:100px;padding:8px 20px;cursor:pointer;font-size:12px;margin-top:28px;font-family:'DM Sans',sans-serif;">Cerrar sesión</button>
+        <button id="btnCerrarAdmin" style="background:transparent;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.5);border-radius:100px;padding:8px 20px;cursor:pointer;font-size:12px;margin-top:28px;font-family:'DM Sans',sans-serif;">Cerrar sesión</button>
       </div>
     </div>
 
@@ -1360,7 +1443,7 @@ footer strong{color:rgba(255,255,255,.65)}
         <label class="cf-label">Tu WhatsApp</label>
         <input type="tel" id="ct" class="cf-input" placeholder="+54 9 11 ..." required>
         <label class="cf-label">¿Qué te está pasando? (opcional)</label>
-        <textarea id="cm" class="cf-input" placeholder="Contanos sobre tus síntomas o consultas..."></textarea>
+        <textarea id="cm" class="cf-input" placeholder="Contanos sobre tus objetivos o consultas..."></textarea>
         <button type="submit" class="cf-btn">Enviar consulta por WhatsApp →</button>
       </form>
     </div>
@@ -1377,7 +1460,7 @@ footer strong{color:rgba(255,255,255,.65)}
       <div class="c-blq">
         <div class="c-blq-t">¿Qué incluye el programa?</div>
         <ul>
-          <li>Plan antiinflamatorio personalizado</li>
+          <li>Plan nutricional personalizado</li>
           <li>Sesiones de coaching con Gabriela</li>
           <li>Consultas nutricionales con Zulimar</li>
           <li>Material de apoyo (PDF + Videos)</li>
@@ -1388,7 +1471,7 @@ footer strong{color:rgba(255,255,255,.65)}
         <div class="c-blq-t">Respondemos en menos de 24hs</div>
         <ul>
           <li>Te contamos todo sobre el programa</li>
-          <li>Evaluamos si es para tu etapa actual</li>
+          <li>Evaluamos cómo podemos ayudarte</li>
         </ul>
       </div>
     </div>
@@ -1396,8 +1479,18 @@ footer strong{color:rgba(255,255,255,.65)}
 </section>
 
 <footer>
-  <p><strong id="ed-footer-nombre">BALANCE PRO · Programa Antiinflamatorio</strong> &nbsp;·&nbsp; Nutrición para Menopausia y Perimenopausia &nbsp;·&nbsp; © 2026</p>
+  <p><strong id="ed-footer-nombre">BALANCE PRO · Descenso de Peso & Hábitos Saludables</strong> &nbsp;·&nbsp; Acompañamiento Grupal · Nutrición & Coaching &nbsp;·&nbsp; © 2026</p>
 </footer>
+
+<!-- BOTONES FLOTANTES FIJOS (izquierda) -->
+<div class="float-stack" id="floatStack">
+  <div class="float-inicio">
+    <span id="ed-float-inicio">INICIO 22 DE ABRIL</span>
+  </div>
+  <button class="float-info-btn" id="floatInfoBtn">
+    📋 <span id="ed-float-btn">INFORMACIÓN DEL PROGRAMA</span>
+  </button>
+</div>
 
 <!-- WhatsApp flotante -->
 <a id="wa-float" href="https://wa.me/5491126507059?text=Hola!%20Me%20interesa%20el%20programa%20BALANCE%20PRO%20🌸" target="_blank" class="waf" aria-label="WhatsApp">
@@ -1405,78 +1498,91 @@ footer strong{color:rgba(255,255,255,.65)}
   <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
-<!-- MODAL INFORMACIÓN DEL PROGRAMA -->
+<!-- MODAL INFORMACIÓN DEL PROGRAMA (completo y editable) -->
 <div class="modal-ov" id="mdProg">
   <div class="modal-bx">
-    <button class="modal-x" onclick="cerrarModal()">✕</button>
-    <div class="modal-h" id="ed-modal-nombre">BALANCE PRO — Programa Antiinflamatorio</div>
-    <div class="modal-sub">Nutrición & Coaching para Menopausia y Perimenopausia</div>
+    <button class="modal-x" id="btnCerrarModal">✕</button>
+
+    <div class="modal-h" id="ed-modal-nombre">BALANCE PRO — Información del Programa</div>
+    <div class="modal-sub" id="ed-modal-sub">PROGRAMA DE ACOMPAÑAMIENTO GRUPAL · ZULY &amp; GABY</div>
 
     <div class="modal-sec">
       <h3 id="ed-modal-que">¿Qué es BALANCE PRO?</h3>
-      <p id="ed-modal-desc">Un programa integral de nutrición antiinflamatoria y coaching de bienestar diseñado específicamente para mujeres en etapa de menopausia y perimenopausia. Combina ciencia nutricional con acompañamiento personalizado para transformar esta etapa en una oportunidad de brillar.</p>
+      <p id="ed-modal-desc">Espacio de acompañamiento grupal orientado al descenso de peso, regular el cortisol y mejorar e incorporar hábitos saludables, guiado por Zuly y Gaby, Nutricionista y Health Coach respectivamente, quienes te brindarán herramientas prácticas y te acompañarán en el proceso hacia un estilo de vida saludable.</p>
     </div>
 
     <div class="modal-sec">
       <h3>¿A quién va dirigido?</h3>
-      <p>Mujeres mayores de 38 años que atraviesan la perimenopausia o menopausia y desean reducir síntomas, controlar la inflamación, mejorar su bienestar general y establecer hábitos alimentarios que las acompañen toda la vida.</p>
+      <p id="ed-modal-dirigido">Personas <strong>mayores de 18 años</strong> que desean transformar su salud y bienestar: mejorar su composición corporal, bajar de peso de forma sostenible, favorecer una mejor digestión e incorporar hábitos saludables que puedan mantenerse a largo plazo.</p>
     </div>
 
     <div class="modal-sec">
-      <h3>Objetivos del programa</h3>
+      <h3>Objetivos</h3>
       <ul>
-        <li><strong>Reducir inflamación crónica</strong> y sus síntomas asociados</li>
-        <li><strong>Regular el equilibrio hormonal</strong> a través de la alimentación</li>
-        <li><strong>Mejorar el sueño, el ánimo y la energía</strong></li>
-        <li><strong>Controlar el peso hormonal</strong> de forma saludable y duradera</li>
-        <li><strong>Construir hábitos sostenibles</strong> para esta etapa y las siguientes</li>
+        <li id="ed-modal-obj1"><strong>Reducir inflamación:</strong> Disminuir la inflamación corporal y abdominal, mejorando la salud general y facilitando la pérdida de peso efectiva sin comprometer la masa muscular.</li>
+        <li id="ed-modal-obj2"><strong>Bajar de peso:</strong> Pérdida saludable y sostenible, manteniendo la masa muscular para un metabolismo eficiente y bienestar físico permanente.</li>
+        <li id="ed-modal-obj3"><strong>Regular el cortisol:</strong> Los cambios en el estilo de vida elevan el cortisol, favoreciendo la acumulación de grasa abdominal. Te damos herramientas para gestionarlo y lograr resultados sostenibles.</li>
+        <li><strong>Hábitos saludables:</strong> Incorporar hábitos que mejoren el bienestar general, regulen el cortisol y faciliten un descenso de peso sostenido a largo plazo.</li>
       </ul>
     </div>
 
     <div class="modal-sec">
-      <h3>Equipo profesional</h3>
+      <h3>Equipo Profesional</h3>
       <ul>
-        <li><strong>Zulimar Rivero</strong> — Licenciada en Nutrición · Especialista en salud femenina</li>
-        <li><strong>Gabriela Mejias</strong> — Health Coach Certificada · Bienestar integral</li>
+        <li id="ed-modal-eq1" class="eq-item">Lic. Zulimar Rivero (Zuly) — Nutricionista</li>
+        <li id="ed-modal-eq2" class="eq-item">Gabriela Mejías (Gaby) — Health Coach</li>
+        <li id="ed-modal-eq3" class="eq-item" style="display:none"></li>
+        <li id="ed-modal-eq4" class="eq-item" style="display:none"></li>
       </ul>
     </div>
 
     <div class="modal-sec">
-      <h3>Modalidad y duración</h3>
+      <h3>Modalidad y Duración</h3>
       <div class="modal-2col">
-        <div class="modal-card"><strong>📍 Modalidad</strong><span>100% Online</span></div>
-        <div class="modal-card"><strong>📅 Sesiones</strong><span>Encuentros semanales vía Zoom</span></div>
-        <div class="modal-card"><strong>⏱ Duración</strong><span>4 semanas (renovable)</span></div>
-        <div class="modal-card"><strong>🔄 Acceso</strong><span>Portal exclusivo con PDF y videos</span></div>
+        <div class="modal-card"><strong>📍 Modalidad</strong><span id="ed-modal-mod">100% grupal / online vía Zoom o Meet</span></div>
+        <div class="modal-card"><strong>📅 Encuentros</strong><span id="ed-modal-enc">Miércoles 20 hs · Sábados 12 hs</span></div>
+        <div class="modal-card"><strong>⏱ Duración</strong><span id="ed-modal-dur">3 semanas (prorrogable)</span></div>
+        <div class="modal-card"><strong>🔄 Renovación</strong><span id="ed-modal-ren">Membresías mensuales, bimestrales o trimestrales según objetivo</span></div>
       </div>
     </div>
 
     <div class="modal-sec">
-      <h3>Inversión</h3>
+      <h3>Inversión y Pago</h3>
       <div class="modal-2col">
         <div class="modal-card">
           <strong>🇦🇷 Argentina</strong>
-          <span>Consultá precio actual por WhatsApp · MercadoPago disponible</span>
+          <span id="ed-modal-precio-ar">AR$45.000 · MercadoPago<br><small style="font-size:11px;color:var(--text-light);">A nombre de: Gabriela Mejias de Lopez<br>DNI: 95.895.676 · CUIL: 27-95.895.676-8</small></span>
+          <span style="display:block;margin-top:4px;font-size:11px;color:var(--text-light);">Alias: <strong id="ed-modal-alias">gemacosmiatra</strong></span>
         </div>
         <div class="modal-card">
-          <strong>🌎 Internacional</strong>
-          <span>Consultá precio en USD · PayPal disponible</span>
+          <strong>🌎 Exterior</strong>
+          <span id="ed-modal-precio-ext">USD 50 · PayPal</span>
+          <span style="display:block;margin-top:4px;font-size:11px;color:var(--rose);font-weight:600;" id="ed-modal-email-pago">andreselm.dev@gmail.com</span>
         </div>
       </div>
     </div>
 
+    <div class="modal-sec">
+      <h3>Requisitos para Ingresar</h3>
+      <ul>
+        <li id="ed-modal-req1">Abonar el importe correspondiente.</li>
+        <li id="ed-modal-req2">Completar el <a id="forms-link" href="https://forms.gle/HDZciFVV5Eh8DVs26" target="_blank" style="color:var(--rose);font-weight:700;text-decoration:underline;cursor:pointer;">formulario de inscripción</a> (obligatorio).</li>
+      </ul>
+    </div>
+
     <div class="modal-warn">
-      ⚠️ <strong>Importante:</strong> Este programa no reemplaza la consulta médica individual. No se prescriben medicamentos ni se realizan diagnósticos médicos.
+      ⚠️ <strong>Importante:</strong> <span id="ed-modal-aviso">Balance Pro es un programa de Acompañamiento Grupal. La participación NO reemplaza la consulta médica y/o nutricional individual. Nuestra misión es facilitar herramientas nutricionales y de hábitos saludables que permitan lograr un descenso de peso saludable y sostenible, con profesionalismo, contención y mirada integral.</span>
     </div>
 
     <div class="modal-ctas">
-      <a href="https://wa.me/5491126507059?text=Hola!%20Quiero%20inscribirme%20al%20programa%20BALANCE%20PRO%20🌸" target="_blank" class="modal-btn modal-btn-p">Inscribirme →</a>
-      <a href="https://wa.me/5491126507059?text=Hola!%20Tengo%20una%20consulta%20sobre%20BALANCE%20PRO%20🌸" target="_blank" class="modal-btn modal-btn-s">Consultar primero</a>
+      <a id="ed-modal-btn1" href="https://wa.me/5491126507059?text=Hola!%20Quiero%20inscribirme%20al%20programa%20BALANCE%20PRO%20🌸" target="_blank" class="modal-btn modal-btn-p">Inscribirme ahora →</a>
+      <a id="ed-modal-btn2" href="https://wa.me/5491126507059?text=Hola!%20Tengo%20una%20consulta%20sobre%20BALANCE%20PRO%20🌸" target="_blank" class="modal-btn modal-btn-s">Consultar por WhatsApp</a>
+      <a href="https://linktr.ee/BalancePro" target="_blank" class="modal-btn" style="background:var(--warm);color:var(--deep-sage);border:2px solid var(--sand);font-size:12px;margin-top:6px;">🌿 Equipo Balance Pro (Linktree)</a>
     </div>
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ============================================================
 //  BALANCE PRO — Script seguro
 //  Opción C: SHA-256 + IIFE (funciones privadas)
@@ -1670,7 +1776,7 @@ document.getElementById('mdProg').addEventListener('click', function(e){
     return {
       pdfs: [
         { id:'p1', nombre:'Guía Antiinflamatoria — Semana 1', meta:'PDF · Plan alimentario completo', data:'', url:'', icono:'📋' },
-        { id:'p2', nombre:'Recetario de Menopausia',           meta:'PDF · 30 recetas antiinflamatorias', data:'', url:'', icono:'🥗' },
+        { id:'p2', nombre:'Recetario Saludable Balance Pro',    meta:'PDF · 30 recetas para el bienestar', data:'', url:'', icono:'🥗' },
         { id:'p3', nombre:'Tabla de Alimentos Funcionales',    meta:'PDF · Referencia rápida',          data:'', url:'', icono:'📊' },
         { id:'p4', nombre:'Protocolo de Sueño & Alimentación', meta:'PDF · Cómo mejorar el descanso',   data:'', url:'', icono:'🌙' }
       ],
@@ -2037,6 +2143,47 @@ document.getElementById('mdProg').addEventListener('click', function(e){
   // ----------------------------------------------------------
   //  TOAST
   // ----------------------------------------------------------
+  // Notificación grande con cuadro visible y callback opcional
+  function _mostrarNotificacion(msg, callback) {
+    // Remover cualquier notificación previa
+    const prev = document.getElementById('_notif_box');
+    if (prev) prev.remove();
+
+    const overlay = document.createElement('div');
+    overlay.id = '_notif_box';
+    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:99999;display:flex;align-items:center;justify-content:center;padding:20px;';
+
+    const box = document.createElement('div');
+    box.style.cssText = 'background:#FDFAF3;border-radius:20px;padding:36px 32px;max-width:420px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.35);border:2px solid #C9941A;font-family:DM Sans,sans-serif;';
+
+    const icon = document.createElement('div');
+    icon.style.cssText = 'font-size:48px;margin-bottom:14px;';
+    icon.textContent = '✅';
+
+    const title = document.createElement('div');
+    title.style.cssText = 'font-size:17px;font-weight:700;color:#2A1F0A;margin-bottom:10px;line-height:1.4;';
+    title.textContent = '¡Información guardada!';
+
+    const text = document.createElement('div');
+    text.style.cssText = 'font-size:14px;color:#6B5530;margin-bottom:24px;line-height:1.6;';
+    text.textContent = msg;
+
+    const btn = document.createElement('button');
+    btn.style.cssText = 'background:#C9941A;color:#fff;border:none;border-radius:100px;padding:13px 36px;font-size:14px;font-weight:700;cursor:pointer;font-family:DM Sans,sans-serif;letter-spacing:.5px;width:100%;';
+    btn.textContent = 'Aceptar y actualizar';
+    btn.addEventListener('click', () => {
+      overlay.remove();
+      if (typeof callback === 'function') callback();
+    });
+
+    box.appendChild(icon);
+    box.appendChild(title);
+    box.appendChild(text);
+    box.appendChild(btn);
+    overlay.appendChild(box);
+    document.body.appendChild(overlay);
+  }
+
   function _mostrarToast(msg) {
     const t = document.createElement('div'); t.className='toast-msg'; t.textContent=msg;
     document.body.appendChild(t);
@@ -2070,7 +2217,7 @@ document.getElementById('mdProg').addEventListener('click', function(e){
     if (!val) { _mostrarToast('Ingresá un nombre válido'); return; }
     const c = getSiteContent(); c['prog-nombre'] = val; saveSiteContent(c);
     aplicarNombrePrograma(val);
-    _mostrarToast('✅ Nombre guardado: ' + val);
+    _mostrarNotificacion('✅ Nombre guardado: ' + val + '. La página se actualizará.', () => { location.reload(); });
   }
 
   function _guardarWA() {
@@ -2078,7 +2225,7 @@ document.getElementById('mdProg').addEventListener('click', function(e){
     if (!num || num.length<8) { _mostrarToast('⚠️ Ingresá un número válido'); return; }
     const c = getSiteContent(); c['wa-num'] = num; saveSiteContent(c);
     _aplicarContenidoGuardado();
-    _mostrarToast('✅ WhatsApp actualizado en todo el sitio');
+    _mostrarNotificacion('✅ WhatsApp actualizado en todo el sitio. La página se actualizará.', () => { location.reload(); });
   }
 
   function _guardarHero() {
@@ -2091,7 +2238,7 @@ document.getElementById('mdProg').addEventListener('click', function(e){
     set('hero-f2','ed-hero-f2-in','ed-hero-f2');
     set('hero-f3','ed-hero-f3-in','ed-hero-f3');
     saveSiteContent(c);
-    _mostrarToast('✅ Hero actualizado');
+    _mostrarNotificacion('✅ Hero actualizado. La página se actualizará.', () => { location.reload(); });
   }
 
   function _guardarProf(n) {
@@ -2106,7 +2253,7 @@ document.getElementById('mdProg').addEventListener('click', function(e){
     set(`p${n}-e3`,    `ed-p${n}-e3-in`,    `ed-p${n}-e3`);
     set(`p${n}-e4`,    `ed-p${n}-e4-in`,    `ed-p${n}-e4`);
     saveSiteContent(c);
-    _mostrarToast(`✅ Profesional ${n} actualizada`);
+    _mostrarNotificacion(`✅ Profesional ${n} actualizada. La página se actualizará.`, () => { location.reload(); });
   }
 
   function _guardarModalDesc() {
@@ -2114,7 +2261,70 @@ document.getElementById('mdProg').addEventListener('click', function(e){
     if (!val) { _mostrarToast('⚠️ Escribí algo primero'); return; }
     const c = getSiteContent(); c['modal-desc'] = val; saveSiteContent(c);
     const el = document.getElementById('ed-modal-desc'); if(el) el.textContent = val;
-    _mostrarToast('✅ Descripción actualizada');
+    _mostrarNotificacion('✅ Descripción actualizada. La página se actualizará.', () => { location.reload(); });
+  }
+
+  // === GUARDAR BOTONES FLOTANTES ===
+  function _guardarFlotantes() {
+    const c = getSiteContent();
+    const ini = document.getElementById('ed-float-inicio-in')?.value.trim();
+    const btn = document.getElementById('ed-float-btn-in')?.value.trim();
+    if (ini) { c['float-inicio'] = ini; const el=document.getElementById('ed-float-inicio'); if(el) el.textContent=ini; }
+    if (btn) { c['float-btn'] = btn; const el=document.getElementById('ed-float-btn'); if(el) el.textContent=btn; }
+    saveSiteContent(c);
+    _mostrarNotificacion('✅ Botones flotantes guardados. La página se actualizará para aplicar los cambios.', () => { location.reload(); });
+  }
+
+  // === GUARDAR INFO COMPLETA DEL PROGRAMA ===
+  function _guardarInfoPrograma() {
+    const c = getSiteContent();
+    const campos = [
+      ['modal-sub',       'ed-modal-sub-in',       'ed-modal-sub'],
+      ['modal-desc',      'ed-modal-desc-in',      'ed-modal-desc'],
+      ['modal-dirigido',  'ed-modal-dirigido-in',  'ed-modal-dirigido'],
+      ['modal-obj1',      'ed-modal-obj1-in',      'ed-modal-obj1'],
+      ['modal-obj2',      'ed-modal-obj2-in',      'ed-modal-obj2'],
+      ['modal-obj3',      'ed-modal-obj3-in',      'ed-modal-obj3'],
+      ['modal-eq1',       'ed-modal-eq1-in',       'ed-modal-eq1'],
+      ['modal-eq2',       'ed-modal-eq2-in',       'ed-modal-eq2'],
+      ['modal-eq3',       'ed-modal-eq3-in',       'ed-modal-eq3'],
+      ['modal-eq4',       'ed-modal-eq4-in',       'ed-modal-eq4'],
+      ['modal-mod',       'ed-modal-mod-in',       'ed-modal-mod'],
+      ['modal-enc',       'ed-modal-enc-in',       'ed-modal-enc'],
+      ['modal-dur',       'ed-modal-dur-in',       'ed-modal-dur'],
+      ['modal-ren',       'ed-modal-ren-in',       'ed-modal-ren'],
+      ['modal-precio-ar', 'ed-modal-precio-ar-in', 'ed-modal-precio-ar'],
+      ['modal-alias',     'ed-modal-alias-in',     'ed-modal-alias'],
+      ['modal-precio-ext','ed-modal-precio-ext-in','ed-modal-precio-ext'],
+      ['modal-email-pago','ed-modal-email-pago-in','ed-modal-email-pago'],
+      ['modal-req1',      'ed-modal-req1-in',      'ed-modal-req1'],
+      ['modal-aviso',     'ed-modal-aviso-in',     'ed-modal-aviso'],
+    ];
+    let guardados = 0;
+    campos.forEach(([key, inId, domId]) => {
+      const val = document.getElementById(inId)?.value.trim();
+      const el = document.getElementById(domId);
+      if (val) {
+        c[key] = val;
+        if (el) { el.textContent = val; el.style.display = ''; }
+        guardados++;
+      } else if (el && el.classList.contains('eq-item')) {
+        c[key] = '';
+        el.textContent = '';
+        el.style.display = 'none';
+      }
+    });
+    // Guardar link del formulario
+    const formsLink = document.getElementById('ed-forms-link-in')?.value.trim();
+    if (formsLink) {
+      c['forms-link'] = formsLink;
+      const linkEl = document.getElementById('forms-link');
+      if (linkEl) linkEl.href = formsLink;
+    }
+    saveSiteContent(c);
+    _mostrarNotificacion('✅ Información del programa guardada correctamente. La página se actualizará para aplicar los cambios.', () => {
+      location.reload();
+    });
   }
 
   function _cargarEditorValues() {
@@ -2140,12 +2350,59 @@ document.getElementById('mdProg').addEventListener('click', function(e){
     setIn('ed-p2-e3-in',      get('ed-p2-e3'));
     setIn('ed-p2-e4-in',      get('ed-p2-e4'));
     setIn('ed-modal-desc-in', get('ed-modal-desc'));
+    // Nuevos campos modal info
+    setIn('ed-modal-sub-in',        get('ed-modal-sub'));
+    setIn('ed-modal-dirigido-in',   get('ed-modal-dirigido'));
+    setIn('ed-modal-obj1-in',       get('ed-modal-obj1'));
+    setIn('ed-modal-obj2-in',       get('ed-modal-obj2'));
+    setIn('ed-modal-obj3-in',       get('ed-modal-obj3'));
+    setIn('ed-modal-eq1-in',        get('ed-modal-eq1'));
+    setIn('ed-modal-eq2-in',        get('ed-modal-eq2'));
+    setIn('ed-modal-eq3-in',        get('ed-modal-eq3'));
+    setIn('ed-modal-eq4-in',        get('ed-modal-eq4'));
+    setIn('ed-modal-mod-in',        get('ed-modal-mod'));
+    setIn('ed-modal-enc-in',        get('ed-modal-enc'));
+    setIn('ed-modal-dur-in',        get('ed-modal-dur'));
+    setIn('ed-modal-ren-in',        get('ed-modal-ren'));
+    setIn('ed-modal-precio-ar-in',  get('ed-modal-precio-ar'));
+    setIn('ed-modal-alias-in',      get('ed-modal-alias'));
+    setIn('ed-modal-precio-ext-in', get('ed-modal-precio-ext'));
+    setIn('ed-modal-email-pago-in', get('ed-modal-email-pago'));
+    setIn('ed-modal-req1-in',       get('ed-modal-req1'));
+    setIn('ed-modal-aviso-in',      get('ed-modal-aviso'));
+    // Flotantes
     const c = getSiteContent();
-    if (c['wa-num'])     { const el=document.getElementById('ed-wa-num'); if(el) el.value=c['wa-num']; }
-    if (c['prog-nombre']){ const el=document.getElementById('ed-prog-nombre-in'); if(el) el.value=c['prog-nombre']; }
+    if (c['wa-num'])       { const el=document.getElementById('ed-wa-num'); if(el) el.value=c['wa-num']; }
+    if (c['prog-nombre'])  { const el=document.getElementById('ed-prog-nombre-in'); if(el) el.value=c['prog-nombre']; }
+    if (c['float-inicio']) { const el=document.getElementById('ed-float-inicio-in'); if(el) el.value=c['float-inicio']; }
+    if (c['float-btn'])    { const el=document.getElementById('ed-float-btn-in'); if(el) el.value=c['float-btn']; }
+    if (c['forms-link'])   { const el=document.getElementById('ed-forms-link-in'); if(el) el.value=c['forms-link']; }
+  }
+
+  // Versión del contenido — al cambiar, limpia claves del modal para que el HTML tome precedencia
+  const CONTENT_VERSION = '2025-v3';
+  function _limpiarVersionAnterior() {
+    const c = getSiteContent();
+    if (c['_version'] !== CONTENT_VERSION) {
+      // Limpiar claves del modal que pueden estar desactualizadas
+      const clavesBorrar = [
+        'modal-sub','modal-desc','modal-dirigido',
+        'modal-obj1','modal-obj2','modal-obj3',
+        'modal-eq1','modal-eq2','modal-eq3','modal-eq4',
+        'modal-mod','modal-enc','modal-dur','modal-ren',
+        'modal-precio-ar','modal-alias','modal-precio-ext','modal-email-pago',
+        'modal-req1','modal-aviso',
+        'hero-sub','hero-f1','hero-f2','hero-f3','hero-tag',
+        'prog-nombre',
+      ];
+      clavesBorrar.forEach(k => delete c[k]);
+      c['_version'] = CONTENT_VERSION;
+      saveSiteContent(c);
+    }
   }
 
   function _aplicarContenidoGuardado() {
+    _limpiarVersionAnterior();
     const c = getSiteContent();
     const set = (id,val) => { const el=document.getElementById(id); if(el&&val) el.textContent=val; };
     set('ed-hero-tag',   c['hero-tag']);
@@ -2169,6 +2426,32 @@ document.getElementById('mdProg').addEventListener('click', function(e){
     set('ed-p2-e4',      c['p2-e4']);
     set('ed-modal-desc', c['modal-desc']);
     if (c['prog-nombre']) aplicarNombrePrograma(c['prog-nombre']);
+    // Botones flotantes
+    if (c['float-inicio']) { const el=document.getElementById('ed-float-inicio'); if(el) el.textContent=c['float-inicio']; }
+    if (c['forms-link'])   { const el=document.getElementById('forms-link'); if(el) el.href=c['forms-link']; }
+    if (c['float-btn'])    { const el=document.getElementById('ed-float-btn'); if(el) el.textContent=c['float-btn']; }
+    // Modal info completa
+    const modalCampos = [
+      ['modal-sub','ed-modal-sub'],['modal-desc','ed-modal-desc'],['modal-dirigido','ed-modal-dirigido'],
+      ['modal-obj1','ed-modal-obj1'],['modal-obj2','ed-modal-obj2'],['modal-obj3','ed-modal-obj3'],
+      ['modal-eq1','ed-modal-eq1'],['modal-eq2','ed-modal-eq2'],['modal-eq3','ed-modal-eq3'],['modal-eq4','ed-modal-eq4'],
+      ['modal-mod','ed-modal-mod'],['modal-enc','ed-modal-enc'],['modal-dur','ed-modal-dur'],['modal-ren','ed-modal-ren'],
+      ['modal-precio-ar','ed-modal-precio-ar'],['modal-alias','ed-modal-alias'],
+      ['modal-precio-ext','ed-modal-precio-ext'],['modal-email-pago','ed-modal-email-pago'],
+      ['modal-req1','ed-modal-req1'],
+      ['modal-aviso','ed-modal-aviso'],
+    ];
+    modalCampos.forEach(([key, domId]) => {
+      const el = document.getElementById(domId);
+      if (!el) return;
+      if (c[key] !== undefined && c[key] !== '') {
+        el.textContent = c[key];
+        el.style.display = '';
+      } else if (el.classList.contains('eq-item') && c[key] === '') {
+        el.textContent = '';
+        el.style.display = 'none';
+      }
+    });
     if (c['wa-num']) {
       const num = c['wa-num'];
       const progNombre = c['prog-nombre'] || 'BALANCE PRO';
@@ -2186,11 +2469,9 @@ document.getElementById('mdProg').addEventListener('click', function(e){
     // Login button
     document.querySelector('.lb-btn')?.addEventListener('click', _loginPortal);
 
-    // Cerrar portal (inscrita)
-    document.querySelector('#portalArea button')?.addEventListener('click', _cerrarPortal);
-
-    // Cerrar portal (admin)
-    document.querySelector('#adminArea .cerrar-portal-btn')?.addEventListener('click', _cerrarPortal);
+    // Cerrar sesión — inscrita y admin (por ID único)
+    document.getElementById('btnCerrarInscrita')?.addEventListener('click', _cerrarPortal);
+    document.getElementById('btnCerrarAdmin')?.addEventListener('click', _cerrarPortal);
 
     // Video overlay close
     document.querySelector('.video-close')?.addEventListener('click', _cerrarVideo);
@@ -2215,22 +2496,52 @@ document.getElementById('mdProg').addEventListener('click', function(e){
     // Botones admin materiales
     document.querySelector('button[onclick="addPdf()"]')?.addEventListener('click', _addPdf);
     document.querySelector('button[onclick="addVideo()"]')?.addEventListener('click', _addVideo);
-    document.querySelector('button[onclick="guardarWA()"]')?.addEventListener('click', _guardarWA);
-    document.querySelector('button[onclick="guardarHero()"]')?.addEventListener('click', _guardarHero);
-    document.querySelector('button[onclick="guardarProf(1)"]')?.addEventListener('click', () => _guardarProf(1));
-    document.querySelector('button[onclick="guardarProf(2)"]')?.addEventListener('click', () => _guardarProf(2));
-    document.querySelector('button[onclick="guardarModalDesc()"]')?.addEventListener('click', _guardarModalDesc);
-    document.querySelector('button[onclick="guardarNombrePrograma()"]')?.addEventListener('click', _guardarNombrePrograma);
+    // ── Botones admin editor (buscados por onclick ANTES de removerlos) ──
+    const _bindBtn = (sel, fn) => { const el = document.querySelector(sel); if(el){ el.addEventListener('click', fn); el.removeAttribute('onclick'); }};
+    _bindBtn('button[onclick="guardarWA()"]',              _guardarWA);
+    _bindBtn('button[onclick="guardarHero()"]',             _guardarHero);
+    _bindBtn('button[onclick="guardarProf(1)"]',            () => _guardarProf(1));
+    _bindBtn('button[onclick="guardarProf(2)"]',            () => _guardarProf(2));
+    _bindBtn('button[onclick="guardarModalDesc()"]',        _guardarModalDesc);
+    _bindBtn('button[onclick="guardarFlotantes()"]',        _guardarFlotantes);
+    _bindBtn('button[onclick="guardarInfoPrograma()"]',     _guardarInfoPrograma);
+    _bindBtn('button[onclick="guardarNombrePrograma()"]',   _guardarNombrePrograma);
+    _bindBtn('button[onclick="generarPass()"]',             _generarPass);
+    _bindBtn('button[onclick="addInscrita()"]',             _addInscrita);
+
+    // ── Abrir/cerrar modal (función central reutilizable) ──
+    function _abrirInfoModal() {
+      document.getElementById('mdProg').classList.add('on');
+      document.body.style.overflow = 'hidden';
+    }
+    function _cerrarInfoModal() {
+      document.getElementById('mdProg').classList.remove('on');
+      document.body.style.overflow = '';
+    }
+
+    // Botón flotante
+    document.getElementById('floatInfoBtn')?.addEventListener('click', _abrirInfoModal);
+
+    // Nav "Programa"
+    document.getElementById('navBtnPrograma')?.addEventListener('click', e => { e.preventDefault(); _abrirInfoModal(); });
+
+    // Hero "Ver el programa"
+    document.getElementById('heroBtnPrograma')?.addEventListener('click', e => { e.preventDefault(); _abrirInfoModal(); });
+
+    // Strip CTA
+    document.getElementById('stripBtnPrograma')?.addEventListener('click', e => { e.preventDefault(); _abrirInfoModal(); });
+
+    // Cerrar modal
+    document.getElementById('btnCerrarModal')?.addEventListener('click', _cerrarInfoModal);
+    document.getElementById('mdProg')?.addEventListener('click', function(e) {
+      if (e.target === this) _cerrarInfoModal();
+    });
 
     // File inputs
     document.getElementById('newPdfFile')?.addEventListener('change', function(){ _onPdfFileSelected(this); });
     document.getElementById('newVideoFile')?.addEventListener('change', function(){ _onVideoFileSelected(this); });
 
-    // Generar pass inscrita
-    document.querySelector('button[onclick="generarPass()"]')?.addEventListener('click', _generarPass);
-    document.querySelector('button[onclick="addInscrita()"]')?.addEventListener('click', _addInscrita);
-
-    // Limpiar todos los onclick inline peligrosos del HTML
+    // ── Remover onclicks residuales (los ya bindeados ya fueron limpiados) ──
     document.querySelectorAll('[onclick]').forEach(el => {
       el.removeAttribute('onclick');
     });
@@ -2317,8 +2628,8 @@ function aplicarNombrePrograma(nombre) {
     nlogo.innerHTML = n.length > 3 ? n.slice(0,-3) + '<span>' + n.slice(-3) + '</span>' : '<span>' + n + '</span>';
   }
   [
-    { id:'ed-footer-nombre', tpl: n => `${n} · Programa Antiinflamatorio` },
-    { id:'ed-modal-nombre',  tpl: n => `${n} — Programa Antiinflamatorio` },
+    { id:'ed-footer-nombre', tpl: n => `${n} · Descenso de Peso & Hábitos Saludables` },
+    { id:'ed-modal-nombre',  tpl: n => `${n} — Información del Programa` },
     { id:'ed-modal-que',     tpl: n => `¿Qué es ${n}?` },
   ].forEach(({ id, tpl }) => {
     const el = document.getElementById(id);
@@ -2347,11 +2658,4 @@ function enviarWA(e) {
 <!-- VIDEO OVERLAY -->
 <div class="video-overlay" id="videoOverlay">
   <div class="video-header">
-    <span id="videoTitle"></span>
-    <button class="video-close" onclick="cerrarVideo()">✕</button>
-  </div>
-  <iframe class="video-iframe" id="videoFrame" allowfullscreen allow="autoplay; encrypted-media"></iframe>
-</div>
-
-</body>
-</html>
+    <span
